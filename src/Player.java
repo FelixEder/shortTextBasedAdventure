@@ -39,7 +39,6 @@ public class Player {
 		return inventory;
 	}
 	
-	//Method in Item class will be added
 	/**
 	 * Adds an item to the inventory
 	 * @param item The item to be added
