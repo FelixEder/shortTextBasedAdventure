@@ -13,8 +13,9 @@ It should be available in Swedish, English and German, something that should be 
 All the lower classes should be tested with JUnit. The bigger ones, like Game, could be tested by play-testing.
 This means that a human tests the game and actively tries to break it. Bugs are then recorded and solved.
 
-**Copy of entire notes written from pre-production (In Swedish)**
-Random tankar:
+### **Copy of entire notes written from pre-production (In Swedish)**
+
+**Random tankar:**
 
 Gör ett eget äventyrsspel, lite baserat på The Farmhouse.
 
@@ -31,15 +32,18 @@ Huvudsaken är att det ska lära mig hur man gör ett helt eget spel och får de
 
 Se till att manuset är så bra det kan bli innan jag börjar, då det bygger mycket på intressant story och set pieces.
 
-Setting:
+**Setting:**
+
 Någon övergiven plats som ska vara intressant att upptäcka. Det måste även vara något bekant för många, annars kommer det ta för mycket text att förklara miljöer. Så typ något som en gård, ett övergivet nöjesfält, ett berg, en hemsökt herrgård. Något sådant.
 
 Vad sägs om en alpmiljö, med ett mystiskt hus uppe på en bergskant? Du är där på en vandring, blir indragen i något hyfsat kort, men spännande. Allt sker i dagsljus, men ska ändå vara lite creepy. 
 
-Handling:
+**Handling:**
+
 Ska vara lättförståelig och underhållande, men även spännande. Storyn är main-drive för att spela spelet, man vill verkligen veta vad som kommer att hända.
 
-First draft manus:
+**First draft manus:**
+
 Du är ute på en vandring i Anderna. på upptäcksfärd själv. Spelet börjar med att man är i en knivig, akut situation. Se “Introt”.
 
 Efter det är avklarat så tar man sig tillbaka till sin camp-plats. Här kan man hitta lite items som ska bygga ut förståelsen för vem du är, tex att du är här själv etc. Men lämna lite mystik ändå.
@@ -53,7 +57,8 @@ Slut
 
 En idé kan vara att först hålla huvudkaraktären hemlig, men sen ju längre handligen går framät utveckla dig mer, tills man kommer fram till något bra i huset i slutet, men kanske är lite over-kill. Tänk över det.
 
-Ideér
+**Ideér**
+
 Introt
 Den olyckan som man vaknar upp till skulle kunna vara typ att man faller ner från en bergskant och precis hamnar på en sluttning. Man vet inte vart man har kommit ifrån eller hur man tog sig dit. Det är sedan ett kort pussel om hur man ska ta sig tillbaka upp. Man kan klättra, men det går inte. Det finns en snöhög, man kan leta i den och hittar då ett par is-hackor som man kan ta sig upp för igen. 
 
