@@ -66,7 +66,8 @@ Det viktiga med detta är dels att introducera spelaren att analysera rum, utfö
 
 Det ska även introducera spelaren snabbt och spännande, vem är jag? varför har jag ramlat ner här?
 
-Scenario 1
+**Scenario 1**
+
 Varje scenario ska vara en liten uppsättning rum med ett pussel som man ska lösa för att kunna ta sig vidare. Det första scenariot ska vara att du hittar en mellanstor teknikpryl i ett rum och i något närliggande hittar en kraschad helikopter. Nästa rum kan vara en snöstorm som man ej kan ta sig igenom, utan man råkar alltid gå tillbaka. Man kan ju få en varning först och försöker man gå så skickas man ur igen. Du måste via de två tidigare rummen hitta något som kan guida dig. Men allting måste vara kopplat till huvudstoryn samt inte vara tråkigt att spela. Inte allt för långt heller, men svårare än det tidigare. 
 
 Det ska finnas något på helikoptern som du ska kunna interagera med. Det ska finnas ett starkt skåp som inte går upp, även om du försöker att använda dina is hackor . Ute vid lådan som inte går att få upp kan du slå sönder låset med ditt verktyg. I det hittar du någon slags nyckel samt en bild på tre personer. 
@@ -79,7 +80,8 @@ Nyckeln kan användas för att öppna skåpet i helikoptern. Där i hittar du en
 
 Audiolog slut, inget mer kvar här, utan man kan gå igenom snöstormen nu. 
 
-Scenario 2
+**Scenario 2**
+
 Ska ha någonting att göra med de två andra i expeditionen där en anfaller den andra och du hamnar i mitten på något sätt. 
 Du tar dig ur stormen och kommer till ett litet läger. Där ser du två personer. Det ska se ut som att de är vänliga med varandra. När du går närmare så ska de vända på sig och skrika något till dig. Någon sorts konversation uppstår. 
 Helt plötsligt så slänger den ena killen sig på dig och den andra skriker. Använd då dina järnitem på honom, han slår tillbaka och ni rullar ner för en kant. Ni kommer ner till en kant där ni båda ställer er upp och kollar på varandra. Väljer du att gå rakt på honom så kommer du inte kunna ta dig vidare, utan du måste göra något pussel för att klara det. Du missar och han håller dig över stupet. 
@@ -88,7 +90,8 @@ I sista sekund kommer den andra killen och knuffar ner honom. Han pratar lite me
 
 Viktiga här att man först tror att man själv var den som de två männen knuffade ut. Sedan kommer tvisten när det visade sig att det var den andra ändå. Lägg ut några ledtrådar till det i lägret. 
 
-Scenario 3
+**Scenario 3**
+
 Du och din kompanjon kommer gående mot ett stort tempel, din kompanjon börjar introducera varför ni åkte hit. Denne personen får vara den som organiserade expeditionen, det är fortfarande lite oklart vad din roll i det hela är. Ni går in i huset och låser dörren efter er. Huset ska vara ett hyfsat stort område där ni försöker ta er in i ett visst rum. Man får göra någon roligt pussel med miljön, gärna lite Tomb Raider-inspirerande. Tillslut löser du det och du och din kompanjon går in i rummet, där finns massa skatt eller whatever. 
 
 Tillslut ska du som spelare förråda din kompanjon och ta allt åt sig själv. Viktigt att spelaren själv faktiskt gör det, men kanske så att man inte inser det. Exempel kan ju vara att plocka upp något från marken och slå hen, eller knuffa ut genom ett fönster. En teknik kan ju vara att helt plötsligt ge spelaren detta kommando och på så sätt tvingar denne att utföra denna ondskedom. Efter det är skett ska din karaktär yttra något som avslöjar att det var din plan hela tiden och sedan gå ut ur rummet med massor av skatt. Lämnar sedan huset och börjar lunka ner för berget.
