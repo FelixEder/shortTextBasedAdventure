@@ -9,6 +9,7 @@ import java.util.Stack;
  */
 public class Player {
 	private String name;
+	//This could also be an arrayList, they wouldn't function any differently.
 	private HashMap<String, Item> inventory;
 	private Room currentRoom;
 	private Stack<Room> roomHistory;
