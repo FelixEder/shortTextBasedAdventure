@@ -46,6 +46,14 @@ public class Room {
 		return exits.get(direction);
 	}
 	
+	/**
+	 * Removes an exit from the collection of exits
+	 * @param direction The direction to the exit to be removed
+	 */
+	public void removeExit(String direction) {
+		exits.remove(direction);
+	}
+	
     /**
      * @return The current exits available for the player
      */
