@@ -64,7 +64,7 @@ public class Room {
     public String getItemString() {
         String returnString = "";
         for(Item listItems : itemsInRoom.values()) {
-            returnString += listItems.getDescription() + "\n";
+        	returnString += listItems.getDescription() + "\n";
         }
         return returnString;
     }
@@ -107,7 +107,7 @@ public class Room {
      * @param itemName The String name of the item to add to the room
      * @param item The object item to add to the room
      */
-    public void addItem(String itemName, Item item) {
-        itemsInRoom.put(itemName, item);
+    public void addItem(Item item) {
+        itemsInRoom.put(item.getName(), item);
     }
 }

@@ -23,13 +23,13 @@ public class Game {
 		parser = new Parser();
 		player = new Player(playerName);
 		this.language = language;
-		createRooms();
+		setUpGame();
 	}
 
 	/**
 	 * Creates all the different rooms in the game and sets all exits.
 	 */
-	private void createRooms() {
+	private void setUpGame() {
 		Room platform, camp, techInSnow;
 		
 		platform = new Room(" on a small platform sticking out from the mountain. There is a long way up and even longer way down. Up is preferable.");
@@ -40,6 +40,15 @@ public class Game {
 		camp.setExit("west", techInSnow);
 		
 		player.setCurrentRoom(platform);
+		
+		Item icePicks, snowPile;
+		
+		icePicks = new Item("Ice picks", "two pair of ice picks, makes for a good grip on ice.", false, null);
+		snowPile = new Item("Snow pile", "A medium sized pile of snow, the one you made when you fell down here.", true, icePicks);
+		snowPile.setSearchedText("Searching the pile of snow, you find " + snowPile.getContains().getDescription());
+		
+		platform.addItem(snowPile);
+		
 	}
 	
 	/**
@@ -89,6 +98,10 @@ public class Game {
 		case HELP:
 			printHelp();
 			break;
+		
+		case SEARCH:
+			search(command);
+			break;
 			
 		case QUIT:
 			wantToQuit = quit(command);
@@ -117,6 +130,34 @@ public class Game {
         }
     }
 	
+    /**
+     * Searches a given item
+     * @param command The command typed by the player.
+     */
+    private void search(Command command) {
+    	if(!command.hasSecondWord()) {
+    		System.out.println("Search what?" + "/n");
+    		return;
+    	}
+    	String item = command.getSecondWord();
+    	Item itemToSearch = player.getCurrentRoom().getRoomItem(item);
+    	if(itemToSearch == null) {
+    		System.out.println("There is no such item in this area!" + "/n");
+    		return;
+    	}
+    	else if(!itemToSearch.isSearchable()){
+    		System.out.println(itemToSearch.getName() + " can't be searched!");
+    		return;
+    	}
+    	else {
+    		itemToSearch.getSearchedText();
+    		System.out.println("You picked up " + itemToSearch.getContains().getName());
+    		player.setInventory(itemToSearch.getContains());
+    		player.getCurrentRoom().removeItemFromRoom(itemToSearch.getName());
+    	}
+    }
+    
+    
     /**
      * Print out some help information.
      * Here we print some stupid, cryptic message and a list of the 
