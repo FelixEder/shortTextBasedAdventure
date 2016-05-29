@@ -82,7 +82,7 @@ public class Player {
 	 * Adds a new room to the room history
 	 * @param room The latest room the player visited
 	 */
-	public void setRoomHistory(Room room) {
-		roomHistory.push(room);
+	public void setRoomHistory() {
+		roomHistory.push(currentRoom);
 	}
 }

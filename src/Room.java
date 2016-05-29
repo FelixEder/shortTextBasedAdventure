@@ -22,13 +22,6 @@ public class Room {
 	}
 	
 	/**
-	 * @return The description of the room
-	 */
-	public String getDescription() {
-		return description;
-	}
-	
-	/**
 	 * Sets the adjacent rooms of the room  in a HashMap
 	 * @param direction The exits to the other rooms
 	 * @param neighboor The adjacent rooms
@@ -74,6 +67,13 @@ public class Room {
             returnString += listItems.getDescription() + "\n";
         }
         return returnString;
+    }
+    
+    /**
+     *  @return A description of the room, including exits and items.
+     */
+    public String getCompleteDescription() {
+        return "You are " + description + "\n" + getItemString() + "\n" + getExitString() + "\n";
     }
     
     /**

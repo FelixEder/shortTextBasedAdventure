@@ -30,7 +30,14 @@ public class Game {
 	 * Creates all the different rooms in the game and sets all exits.
 	 */
 	private void createRooms() {
+		Room platform, camp, techInSnow;
 		
+		platform = new Room(" on a small platform sticking out from the mountain. There is a long way up and even longer way down. Up is preferable.");
+		camp = new Room(" in a small encampment. There is a camp fire, small tent and a bunch of junk.");
+		techInSnow = new Room(" on snow-covered plain. There isn't much here except for a strange box half buried in the snow.");
+		
+		platform.setExit("up", camp);
+		camp.setExit("west", techInSnow);
 	}
 	
 	/**
@@ -51,7 +58,11 @@ public class Game {
 	 * The text that is printed out in beginning of the game.
 	 */
 	private void printStartMessage() {
-		
+		System.out.println();
+		System.out.println("Welcome to my game!");
+		System.out.println("You are on an expition in the andies of south america.");
+		System.out.println("However, you are currently falling down a cliff.");
+		System.out.println("After falling for a bit, you land on a small platform");
 	}
 	
 	/**
@@ -65,10 +76,65 @@ public class Game {
 		
 		switch(commandWord) {
 		//Add more cases as the number of commands increases.
+		case GO:
+			goRoom(command);
+			break;
+			
+		case QUIT:
+			wantToQuit = quit(command);
+			break;
+			
 		default:   
 			System.out.println("I don't know what you mean..." + "\n");
             break;
 		}
 		return wantToQuit;
+	}
+	
+	   /** 
+     * "Quit" was entered. Check the rest of the command to see
+     * whether we really quit the game.
+     * @return true, if this command quits the game, false otherwise.
+     */
+    private boolean quit(Command command) 
+    {
+        if(command.hasSecondWord()) {
+            System.out.println("Quit what?" + "\n");
+            return false;
+        }
+        else {
+            return true;  // signal that we want to quit
+        }
+    }
+	
+    /** 
+     * Try to go in one direction. If there is an exit, enter
+     * the new room, otherwise print an error message.
+     * Some rooms require certain items to access.
+     * @param command The command typed by the player.
+     */
+	private void goRoom(Command command) {
+		if(!command.hasSecondWord()) {
+            // if there is no second word, we don't know where to go...
+            System.out.println("Go where?" + "\n");
+            return;
+        }
+		String direction = command.getSecondWord();
+		Room nextRoom = player.getCurrentRoom().getExit(direction);
+		 if (nextRoom == null) {
+	            System.out.println("There is no exit in that direction!" + "\n");
+		 }
+		 else {
+			 player.setRoomHistory();
+			 player.setCurrentRoom(nextRoom);
+			 printLocationInfo();
+		 }
+	}
+	
+	/**
+	 * Prints the complete information regarding a room and it's content
+	 */
+	private void printLocationInfo() {
+		System.out.println(player.getCurrentRoom().getCompleteDescription());
 	}
 }
