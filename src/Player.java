@@ -52,10 +52,32 @@ public class Player {
 	 * @param item The item to be returned
 	 * @return The item to be returned
 	 */
-	public Item getInventory(Item item) {
-		return inventory.get(item.getName());
+	public Item getInventory(String itemName) {
+		return inventory.get(itemName);
 	}
-	
+	   
+    /**
+     * Removes an item from inventory and prints out information.
+     * @param invItem The item the player want to remove from inventory.
+     */
+    public void removeInventory(String invItem) {
+        Item itemToDrop = inventory.remove(invItem);
+        currentRoom.addItem(itemToDrop);
+        System.out.println("You dropped " + itemToDrop.getName() + "." + "\n");
+    }
+    
+    /**
+     * Returns a String with all items currently in inventory.
+     * @return A string with all items in inventory separated by space.
+     */
+    public String getInventoryString() {
+        String returnString = "Inventory:";
+        for(String key : inventory.keySet()) {
+            returnString += " " + key;
+        }
+        return returnString;
+    }
+    
 	/**
 	 * @return The current room of the player
 	 */
@@ -85,4 +107,12 @@ public class Player {
 	public void setRoomHistory() {
 		roomHistory.push(currentRoom);
 	}
+	
+	/**
+	 * Checks whether the stack of rooms is empty.
+	 * @return The boolean value true if stack is empty, returns false if it is not.
+ 	 */
+    public boolean checkIfEmpty() {
+        return roomHistory.empty();
+    }
 }

@@ -32,7 +32,8 @@ public class Game {
 	private void setUpGame() {
 		Room platform, camp, techInSnow;
 		
-		platform = new Room(" on a small platform sticking out from the mountain. There is a long way up and even longer way down. Up is preferable.");
+		platform = new Room(" on a small platform sticking out from the mountain. There is a long way up" +
+				" and even longer way down. Up is preferable.");
 		camp = new Room(" in a small encampment. There is a camp fire, small tent and a bunch of junk.");
 		techInSnow = new Room(" on snow-covered plain. There isn't much here except for a strange box half buried in the snow.");
 		
@@ -43,8 +44,8 @@ public class Game {
 		
 		Item icePicks, snowPile;
 		
-		icePicks = new Item("Ice picks", "two pair of ice picks, makes for a good grip on ice.", false, null);
-		snowPile = new Item("Snow pile", "A medium sized pile of snow, the one you made when you fell down here.", true, icePicks);
+		icePicks = new Item("Icepicks", "two pair of ice picks, makes for a good grip on ice.", false, null, true);
+		snowPile = new Item("Snowpile", "A medium sized pile of snow, the one you made when you fell down here.", true, icePicks, false);
 		snowPile.setSearchedText("Searching the pile of snow, you find " + snowPile.getContains().getDescription());
 		
 		platform.addItem(snowPile);
@@ -103,8 +104,28 @@ public class Game {
 			search(command);
 			break;
 			
+		case TAKE:
+			pickUpItem(command);
+			break;
+			
 		case QUIT:
 			wantToQuit = quit(command);
+			break;
+			
+		case LOOK:
+			printLocationInfo();
+			break;
+
+		case BACK:
+			back(command);
+			break;
+	          
+		case DROP:
+			dropItems(command);
+			break;
+	          
+		case ITEMS:
+			System.out.println(player.getInventoryString() + "\n");
 			break;
 			
 		default:   
@@ -136,13 +157,13 @@ public class Game {
      */
     private void search(Command command) {
     	if(!command.hasSecondWord()) {
-    		System.out.println("Search what?" + "/n");
+    		System.out.println("Search what?" + "\n");
     		return;
     	}
     	String item = command.getSecondWord();
     	Item itemToSearch = player.getCurrentRoom().getRoomItem(item);
     	if(itemToSearch == null) {
-    		System.out.println("There is no such item in this area!" + "/n");
+    		System.out.println("There is no such item in this area!" + "\n");
     		return;
     	}
     	else if(!itemToSearch.isSearchable()){
@@ -150,7 +171,7 @@ public class Game {
     		return;
     	}
     	else {
-    		itemToSearch.getSearchedText();
+    		System.out.println(itemToSearch.getSearchedText());
     		System.out.println("You picked up " + itemToSearch.getContains().getName());
     		player.setInventory(itemToSearch.getContains());
     		player.getCurrentRoom().removeItemFromRoom(itemToSearch.getName());
@@ -197,6 +218,73 @@ public class Game {
 			 printLocationInfo();
 		 }
 	}
+	
+    /**
+     * If player has left starting area, goes back to the previous room.
+     * @param command The command written by the player.
+     */
+    private void back(Command command) {
+        if(command.hasSecondWord()) {
+            if(command.getSecondWord().equals("back")) {
+                System.out.println("Back back where?" + "\n");
+            }
+            else {
+                System.out.println("Back where?" + "\n");
+            }
+       } 
+        else if(!player.checkIfEmpty()) {
+           player.setCurrentRoom(player.getRoomHistory()); 
+           printLocationInfo();
+        }
+        else {
+            System.out.println("From here on, you can't go back further." + "\n" );
+        }
+    }
+	
+    /**
+     * Picks up an item and adds to player inventory. 
+     * In some cases an other item maybe needed in inventory.
+     * @param command The command written by the player.
+     */
+    private void pickUpItem(Command command) {
+        if(!command.hasSecondWord()) {
+            System.out.println("Take what?" + "\n");
+            return;
+        }
+        else if(player.getCurrentRoom().isItemInRoom(command.getSecondWord())) {
+        	Item itemToPick = player.getCurrentRoom().getRoomItem(command.getSecondWord());
+        	if(itemToPick.isLiftable()) {
+                    player.setInventory(itemToPick);
+                    System.out.println("Picked up " + itemToPick.getName() + "." + "\n");
+                    return;
+                } 
+        	else {
+        		System.out.println(itemToPick.getName() + " can't be picked up!" + "\n");
+        		return;
+        	}
+        }
+        else {
+            System.out.println("The mentioned item is not located in the room!" + "\n");
+        }
+    }
+    
+    /**
+     * Drops an item from player inventory.
+     * @param command The command written by the player.
+     */
+    private void dropItems(Command command) {
+        if(!command.hasSecondWord()) {
+            System.out.println("Drop what?" + "\n");
+            return;
+        }
+        Item itemToDrop = player.getInventory(command.getSecondWord());
+        if(itemToDrop != null) {
+            player.removeInventory(itemToDrop.getName());
+       }
+        else {
+            System.out.println("The mentioned item is not in your inventory!" + "\n");
+        }
+    }
 	
 	/**
 	 * Prints the complete information regarding a room and it's content

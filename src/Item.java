@@ -5,7 +5,7 @@
  */
 public class Item {
 	private String name, description, searchedText;
-	private boolean searchable;
+	private boolean searchable, liftable;
 	private Item contains;
 	
 	/**
@@ -13,7 +13,7 @@ public class Item {
 	 * @param name The name of the item
 	 * @param description The description of the item
 	 */
-	public Item(String name, String description, boolean searchable, Item contains) {
+	public Item(String name, String description, boolean searchable, Item contains, boolean liftable) {
 		this.name = name;
 		this.description = description;
 		this.searchable = searchable;
@@ -54,5 +54,20 @@ public class Item {
 	 */
 	public String getDescription() {
 		return description;
+	}
+
+	/**
+	 * @return Boolean regarding if item is liftable or not.
+	 */
+	public boolean isLiftable() {
+		return liftable;
+	}
+	
+	/**
+	 * Set an item as liftable or not.
+	 * @param liftable The boolean value regarding the question told above.
+	 */
+	public void setLiftable(Boolean liftable) {
+		this.liftable = liftable;
 	}
 }
