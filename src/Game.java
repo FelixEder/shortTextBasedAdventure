@@ -36,10 +36,7 @@ public class Game {
 				" and even longer way down. Up is preferable.");
 		camp = new Room(" in a small encampment. There is a camp fire, small tent and a bunch of junk.");
 		techInSnow = new Room(" on snow-covered plain. There isn't much here except for a strange box half buried in the snow.");
-		
-		platform.setExit("up", camp);
-		camp.setExit("west", techInSnow);
-		
+	
 		player.setCurrentRoom(platform);
 		
 		Item icePicks, snowPile;
@@ -49,6 +46,13 @@ public class Game {
 		snowPile.setSearchedText("Searching the pile of snow, you find " + snowPile.getContains().getDescription());
 		
 		platform.addItem(snowPile);
+		
+		platform.setExit("up", camp, "You try to climb the icy wall,  only to lose your grip and fall down on the pile of snow",
+		"With your ice picks, you scale the wall as if it was horizontal",icePicks);
+		camp.setExit("west", techInSnow, "", "", null);
+		camp.setExit("down", platform, "", "", null);
+		
+		
 		
 	}
 	
@@ -177,7 +181,6 @@ public class Game {
     		player.getCurrentRoom().removeItemFromRoom(itemToSearch.getName());
     	}
     }
-    
     
     /**
      * Print out some help information.

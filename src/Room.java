@@ -8,7 +8,7 @@ import java.util.HashMap;
  */
 public class Room {
 	private String description;
-	private HashMap<String, Room> exits;
+	private HashMap<String, ExitItem> exits;
 	private HashMap<String, Item> itemsInRoom;
 	
 	/**
@@ -17,8 +17,26 @@ public class Room {
 	 */
 	public Room(String description) {
 		this.description = description;
-		exits = new HashMap<String, Room>();
+		exits = new HashMap<String, ExitItem>();
 		itemsInRoom = new HashMap<String, Item>();
+	}
+	
+	/**
+	 * Nested class that sets requirements for when exiting to another room
+	 * @author felix
+	 *
+	 */
+	public class ExitItem {
+		public Room exitRoom;
+		public String failedExit, successExit;
+		public Item itemNeeded;
+		
+		private ExitItem(Room exitRoom, String failedExit, String successExit, Item itemNeeded) {
+			this.exitRoom = exitRoom;
+			this.failedExit = failedExit;
+			this.successExit = successExit;
+			this.itemNeeded = itemNeeded;
+		}
 	}
 	
 	/**
@@ -26,8 +44,9 @@ public class Room {
 	 * @param direction The exits to the other rooms
 	 * @param neighboor The adjacent rooms
 	 */
-	public void setExit(String direction, Room neighboor) {
-		exits.put(direction, neighboor);
+	public void setExit(String direction, Room exitRoom, String failedExit, String successExit, Item itemNeeded) {
+		ExitItem exitInfo = new ExitItem(exitRoom, failedExit, successExit, itemNeeded);
+		exits.put(direction, exitInfo);
 	}
 	
 	/**
@@ -36,7 +55,7 @@ public class Room {
 	 * @return The room the exit leads to
 	 */
 	public Room getExit(String direction) {
-		return exits.get(direction);
+		return exits.get(direction).exitRoom;
 	}
 	
 	/**
