@@ -171,7 +171,7 @@ public class Game {
     		return;
     	}
     	else if(!itemToSearch.isSearchable()){
-    		System.out.println(itemToSearch.getName() + " can't be searched!");
+    		System.out.println(itemToSearch.getName() + " can't be searched!" + "\n");
     		return;
     	}
     	else {
