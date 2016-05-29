@@ -38,6 +38,8 @@ public class Game {
 		
 		platform.setExit("up", camp);
 		camp.setExit("west", techInSnow);
+		
+		player.setCurrentRoom(platform);
 	}
 	
 	/**
@@ -60,9 +62,13 @@ public class Game {
 	private void printStartMessage() {
 		System.out.println();
 		System.out.println("Welcome to my game!");
-		System.out.println("You are on an expition in the andies of south america.");
+        System.out.println("Type '" + parser.getSpecificKey() + "' if you need help.");
+        System.out.println();
+		System.out.println("You are on an expedition in the Andes of South America.");
 		System.out.println("However, you are currently falling down a cliff.");
-		System.out.println("After falling for a bit, you land on a small platform");
+		System.out.println("Suddenly, you land on a small platform");
+		System.out.println();
+		printLocationInfo();
 	}
 	
 	/**
@@ -78,6 +84,10 @@ public class Game {
 		//Add more cases as the number of commands increases.
 		case GO:
 			goRoom(command);
+			break;
+			
+		case HELP:
+			printHelp();
 			break;
 			
 		case QUIT:
@@ -107,6 +117,22 @@ public class Game {
         }
     }
 	
+    /**
+     * Print out some help information.
+     * Here we print some stupid, cryptic message and a list of the 
+     * command words.
+     */
+    private void printHelp() 
+    {
+        System.out.println("You are lost. You are alone. You wander");
+        System.out.println("around the Andes.");
+        System.out.println();
+        System.out.println("Your command words are:");
+        parser.showCommands();
+        System.out.println();
+        System.out.println();
+    }
+    
     /** 
      * Try to go in one direction. If there is an exit, enter
      * the new room, otherwise print an error message.
