@@ -20,11 +20,8 @@ public class CommandWords
     {
         validCommands = new HashMap<String, enumCommands>();
         for(enumCommands command : enumCommands.values()) {
-            if(command.getTranslation() != null) {
             validCommands.put(command.toString(), command);
-            validCommands.put(command.getTranslation(), command);
-         }
-      }
+        }
     }
 
     /**
@@ -33,10 +30,8 @@ public class CommandWords
      * @return The CommandWord corresponding to commandWord, or UNKNOWN
      *         if it is not a valid command word.
      */
-    public enumCommands getCommandWord(String commandWord)
-    {
-    	enumCommands command = validCommands.get(commandWord);
-           	return command;
+    public enumCommands getCommandWord(String commandWord)	{
+    	return validCommands.get(commandWord);
     }
     
     /**
