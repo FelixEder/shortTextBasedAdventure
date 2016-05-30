@@ -46,7 +46,7 @@ Ska vara lättförståelig och underhållande, men även spännande. Storyn är 
 
 Du är ute på en vandring i Anderna. på upptäcksfärd själv. Spelet börjar med att man är i en knivig, akut situation. Se “Introt”.
 
-Efter det är avklarat så tar man sig tillbaka till sin camp-plats. Här kan man hitta lite items som ska bygga ut förståelsen för vem du är, tex att du är här själv etc. Men lämna lite mystik ändå.
+Efter det är avklarat så tar man sig tillbaka till sin camp-plats. Här kan man hitta lite items som ska bygga ut förståelsen för vem du är. Spelaren ska tro att den är där ensam, men i själva verket så är detta campet för tre personer, bara att de andra har gått. Men lämna lite mystik ändå.
 Solen har grytt och man bestämmer sig för att fortsätta sin vandring, så man tar sitt pick och pack och fortsätter. Du kommer du till “scenario 1”.
 
 Dagen som nu sker kommer vara att man försöker att ta sig framåt längs vägen, men att två-tre separata scenarion sker. Alla två-tre är relativt simpla pussel men som antigen introducerar någon mystisk karaktär eller fenomen. 
