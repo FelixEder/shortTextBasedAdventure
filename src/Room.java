@@ -8,7 +8,7 @@ import java.util.HashMap;
  */
 public class Room {
 	private String description;
-	private HashMap<String, ExitItem> exits;
+	private HashMap<String, ExitReq> exits;
 	private HashMap<String, Item> itemsInRoom;
 	
 	/**
@@ -17,7 +17,7 @@ public class Room {
 	 */
 	public Room(String description) {
 		this.description = description;
-		exits = new HashMap<String, ExitItem>();
+		exits = new HashMap<String, ExitReq>();
 		itemsInRoom = new HashMap<String, Item>();
 	}
 	
@@ -26,12 +26,12 @@ public class Room {
 	 * @author felix
 	 *
 	 */
-	public class ExitItem {
+	public class ExitReq {
 		public Room exitRoom;
 		public String failedExit, successExit;
 		public Item itemNeeded;
 		
-		private ExitItem(Room exitRoom, String failedExit, String successExit, Item itemNeeded) {
+		private ExitReq(Room exitRoom, String failedExit, String successExit, Item itemNeeded) {
 			this.exitRoom = exitRoom;
 			this.failedExit = failedExit;
 			this.successExit = successExit;
@@ -45,7 +45,7 @@ public class Room {
 	 * @param neighboor The adjacent rooms
 	 */
 	public void setExit(String direction, Room exitRoom, String failedExit, String successExit, Item itemNeeded) {
-		ExitItem exitInfo = new ExitItem(exitRoom, failedExit, successExit, itemNeeded);
+		ExitReq exitInfo = new ExitReq(exitRoom, failedExit, successExit, itemNeeded);
 		exits.put(direction, exitInfo);
 	}
 	
@@ -54,8 +54,8 @@ public class Room {
 	 * @param direction The direction of the exit
 	 * @return The room the exit leads to
 	 */
-	public Room getExit(String direction) {
-		return exits.get(direction).exitRoom;
+	public ExitReq getExit(String direction) {
+		return exits.get(direction);
 	}
 	
 	/**

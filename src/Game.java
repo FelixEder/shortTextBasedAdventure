@@ -52,8 +52,6 @@ public class Game {
 		camp.setExit("west", techInSnow, "", "", null);
 		camp.setExit("down", platform, "", "", null);
 		
-		
-		
 	}
 	
 	/**
@@ -76,11 +74,11 @@ public class Game {
 	private void printStartMessage() {
 		System.out.println();
 		System.out.println("Welcome to my game!");
-        System.out.println("Type '" + parser.getSpecificKey() + "' if you need help.");
         System.out.println();
 		System.out.println("You are on an expedition in the Andes of South America.");
 		System.out.println("However, you are currently falling down a cliff.");
 		System.out.println("Suddenly, you land on a small platform");
+        System.out.println("Type '" + parser.getSpecificKey() + "' if you need help.");
 		System.out.println();
 		printLocationInfo();
 	}
@@ -211,14 +209,18 @@ public class Game {
             return;
         }
 		String direction = command.getSecondWord();
-		Room nextRoom = player.getCurrentRoom().getExit(direction);
+		Room.ExitReq nextRoom = player.getCurrentRoom().getExit(direction);
 		 if (nextRoom == null) {
 	            System.out.println("There is no exit in that direction!" + "\n");
 		 }
-		 else {
+		 else if(nextRoom.itemNeeded == null || player.getInventory(nextRoom.itemNeeded.getName()) != null){
 			 player.setRoomHistory();
-			 player.setCurrentRoom(nextRoom);
+			 player.setCurrentRoom(nextRoom.exitRoom);
+			 System.out.println(nextRoom.successExit + "\n");
 			 printLocationInfo();
+		 }
+		 else {
+			 System.out.println(nextRoom.failedExit + "\n");
 		 }
 	}
 	
