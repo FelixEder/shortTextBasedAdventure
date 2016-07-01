@@ -15,7 +15,7 @@
 
 public class InputCommand
 {
-    private enumCommands commandWord;
+    private EnumCommands commandWord;
     private String secondWord;
 
     /**
@@ -25,7 +25,7 @@ public class InputCommand
      * was not recognized.
      * @param secondWord The second word of the command. May be null.
      */
-    public InputCommand(enumCommands commandWord, String secondWord)
+    public InputCommand(EnumCommands commandWord, String secondWord)
     {
         this.commandWord = commandWord;
         this.secondWord = secondWord;
@@ -35,7 +35,7 @@ public class InputCommand
      * Return the command word (the first word) of this command.
      * @return The command word.
      */
-    public enumCommands getCommandWord()
+    public EnumCommands getCommandWord()
     {
         return commandWord;
     }

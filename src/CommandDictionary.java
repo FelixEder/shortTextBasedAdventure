@@ -11,14 +11,14 @@ public class CommandDictionary
 {
     // A mapping between a command word and the CommandWord
     // associated with it.
-    private HashMap<String, enumCommands> validCommands;
+    private HashMap<String, EnumCommands> validCommands;
 
     /**
      * Constructor - initialize the command words.
      */
     public CommandDictionary() {
-        validCommands = new HashMap<String, enumCommands>();
-        for(enumCommands command : enumCommands.values()) {
+        validCommands = new HashMap<String, EnumCommands>();
+        for(EnumCommands command : EnumCommands.values()) {
             validCommands.put(command.toString(), command);
         }
     }
@@ -29,8 +29,10 @@ public class CommandDictionary
      * @return The CommandWord corresponding to commandWord, or UNKNOWN
      *         if it is not a valid command word.
      */
-    public enumCommands getCommandWord(String commandWord)	{
-    	return validCommands.get(commandWord);
+    public EnumCommands getCommandWord(String commandWord)	{
+    	EnumCommands command = validCommands.get(commandWord);
+    	if(command != null) return command;
+    	return EnumCommands.UNKNOWN;
     }
     
     /**
@@ -55,6 +57,6 @@ public class CommandDictionary
      * @return The command associated with the HELP-command.
      */
     public String getHelpString() {
-        return enumCommands.HELP.toString();
+        return EnumCommands.HELP.toString();
     }
 }

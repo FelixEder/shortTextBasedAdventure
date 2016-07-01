@@ -65,7 +65,7 @@ public class Game {
 			InputCommand inputCommand = parser.getCommand();
 			done = processCommand(inputCommand);
 		}
-		System.out.println("Thanks for enjoying my little game, have a nice day.");
+		System.out.println("Thanks for enjoying my little game, have a nice day." + "\n");
 	}
 	
 	/**
@@ -90,7 +90,7 @@ public class Game {
 	 */
 	private boolean processCommand(InputCommand inputCommand) {
 		boolean wantToQuit = false;
-		enumCommands commandWord = inputCommand.getCommandWord();
+		EnumCommands commandWord = inputCommand.getCommandWord();
 		
 		switch(commandWord) {
 		//Add more cases as the number of commands increases.

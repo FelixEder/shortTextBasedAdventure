@@ -5,12 +5,12 @@
  * 
  * @author (Felix Eder)
  */
-public enum enumCommands
+public enum EnumCommands
 {
     // A value for each command word along with its
     // corresponding user interface string.
     GO("go", "gehen"), QUIT("quit", "beenden"), HELP("help", null), LOOK("look", null), BACK("back", null), TAKE("take", null)
-    , DROP("drop", null), ITEMS("items", null), SEARCH("search", "suche");
+    , DROP("drop", null), ITEMS("items", null), SEARCH("search", "suche"), UNKNOWN("?", null);
     
     // The command string.
     private String commandString;
@@ -20,7 +20,7 @@ public enum enumCommands
      * Initialize with the corresponding command string and translation.
      * @param commandString The command string.
      */
-    enumCommands(String commandString, String translated)
+    EnumCommands(String commandString, String translated)
     {
         this.commandString = commandString;
         translation = translated;
