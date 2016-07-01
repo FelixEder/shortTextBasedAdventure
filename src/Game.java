@@ -42,7 +42,7 @@ public class Game {
 		Item icePicks, snowPile;
 		
 		icePicks = new Item("Icepicks", "two pair of ice picks, makes for a good grip on ice.", false, null, true);
-		snowPile = new Item("Snowpile", "A medium sized pile of snow, the one you made when you fell down here.", true, icePicks, false);
+		snowPile = new Item("Snowpile", "a medium sized pile of snow, the one you made when you fell down here.", true, icePicks, false);
 		snowPile.setSearchedText("Searching the pile of snow, you find " + snowPile.getContains().getDescription());
 		
 		platform.addItem(snowPile);
@@ -62,8 +62,8 @@ public class Game {
 		
 		boolean done = false;
 		while(!done) {
-			Command command = parser.getCommand();
-			done = processCommand(command);
+			InputCommand inputCommand = parser.getCommand();
+			done = processCommand(inputCommand);
 		}
 		System.out.println("Thanks for enjoying my little game, have a nice day.");
 	}
@@ -85,17 +85,17 @@ public class Game {
 	
 	/**
 	 * Processes the commands from the player
-	 * @param command The command from the player
+	 * @param inputCommand The command from the player
 	 * @return The boolean regarding if the player wants to quit the game
 	 */
-	private boolean processCommand(Command command) {
+	private boolean processCommand(InputCommand inputCommand) {
 		boolean wantToQuit = false;
-		enumCommands commandWord = command.getCommandWord();
+		enumCommands commandWord = inputCommand.getCommandWord();
 		
 		switch(commandWord) {
 		//Add more cases as the number of commands increases.
 		case GO:
-			goRoom(command);
+			goRoom(inputCommand);
 			break;
 			
 		case HELP:
@@ -103,15 +103,15 @@ public class Game {
 			break;
 		
 		case SEARCH:
-			search(command);
+			search(inputCommand);
 			break;
 			
 		case TAKE:
-			pickUpItem(command);
+			pickUpItem(inputCommand);
 			break;
 			
 		case QUIT:
-			wantToQuit = quit(command);
+			wantToQuit = quit(inputCommand);
 			break;
 			
 		case LOOK:
@@ -119,11 +119,11 @@ public class Game {
 			break;
 
 		case BACK:
-			back(command);
+			back(inputCommand);
 			break;
 	          
 		case DROP:
-			dropItems(command);
+			dropItems(inputCommand);
 			break;
 	          
 		case ITEMS:
@@ -142,9 +142,9 @@ public class Game {
      * whether we really quit the game.
      * @return true, if this command quits the game, false otherwise.
      */
-    private boolean quit(Command command) 
+    private boolean quit(InputCommand inputCommand) 
     {
-        if(command.hasSecondWord()) {
+        if(inputCommand.hasSecondWord()) {
             System.out.println("Quit what?" + "\n");
             return false;
         }
@@ -155,14 +155,14 @@ public class Game {
 	
     /**
      * Searches a given item
-     * @param command The command typed by the player.
+     * @param inputCommand The command typed by the player.
      */
-    private void search(Command command) {
-    	if(!command.hasSecondWord()) {
+    private void search(InputCommand inputCommand) {
+    	if(!inputCommand.hasSecondWord()) {
     		System.out.println("Search what?" + "\n");
     		return;
     	}
-    	String item = command.getSecondWord();
+    	String item = inputCommand.getSecondWord();
     	Item itemToSearch = player.getCurrentRoom().getRoomItem(item);
     	if(itemToSearch == null) {
     		System.out.println("There is no such item in this area!" + "\n");
@@ -200,15 +200,15 @@ public class Game {
      * Try to go in one direction. If there is an exit, enter
      * the new room, otherwise print an error message.
      * Some rooms require certain items to access.
-     * @param command The command typed by the player.
+     * @param inputCommand The command typed by the player.
      */
-	private void goRoom(Command command) {
-		if(!command.hasSecondWord()) {
+	private void goRoom(InputCommand inputCommand) {
+		if(!inputCommand.hasSecondWord()) {
             // if there is no second word, we don't know where to go...
             System.out.println("Go where?" + "\n");
             return;
         }
-		String direction = command.getSecondWord();
+		String direction = inputCommand.getSecondWord();
 		Room.ExitReq nextRoom = player.getCurrentRoom().getExit(direction);
 		 if (nextRoom == null) {
 	            System.out.println("There is no exit in that direction!" + "\n");
@@ -226,11 +226,11 @@ public class Game {
 	
     /**
      * If player has left starting area, goes back to the previous room.
-     * @param command The command written by the player.
+     * @param inputCommand The command written by the player.
      */
-    private void back(Command command) {
-        if(command.hasSecondWord()) {
-            if(command.getSecondWord().equals("back")) {
+    private void back(InputCommand inputCommand) {
+        if(inputCommand.hasSecondWord()) {
+            if(inputCommand.getSecondWord().equals("back")) {
                 System.out.println("Back back where?" + "\n");
             }
             else {
@@ -249,15 +249,15 @@ public class Game {
     /**
      * Picks up an item and adds to player inventory. 
      * In some cases an other item maybe needed in inventory.
-     * @param command The command written by the player.
+     * @param inputCommand The command written by the player.
      */
-    private void pickUpItem(Command command) {
-        if(!command.hasSecondWord()) {
+    private void pickUpItem(InputCommand inputCommand) {
+        if(!inputCommand.hasSecondWord()) {
             System.out.println("Take what?" + "\n");
             return;
         }
-        else if(player.getCurrentRoom().isItemInRoom(command.getSecondWord())) {
-        	Item itemToPick = player.getCurrentRoom().getRoomItem(command.getSecondWord());
+        else if(player.getCurrentRoom().isItemInRoom(inputCommand.getSecondWord())) {
+        	Item itemToPick = player.getCurrentRoom().getRoomItem(inputCommand.getSecondWord());
         	if(itemToPick.isLiftable()) {
                     player.setInventory(itemToPick);
                     System.out.println("Picked up " + itemToPick.getName() + "." + "\n");
@@ -275,14 +275,14 @@ public class Game {
     
     /**
      * Drops an item from player inventory.
-     * @param command The command written by the player.
+     * @param inputCommand The command written by the player.
      */
-    private void dropItems(Command command) {
-        if(!command.hasSecondWord()) {
+    private void dropItems(InputCommand inputCommand) {
+        if(!inputCommand.hasSecondWord()) {
             System.out.println("Drop what?" + "\n");
             return;
         }
-        Item itemToDrop = player.getInventory(command.getSecondWord());
+        Item itemToDrop = player.getInventory(inputCommand.getSecondWord());
         if(itemToDrop != null) {
             player.removeInventory(itemToDrop.getName());
        }

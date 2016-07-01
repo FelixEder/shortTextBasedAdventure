@@ -6,7 +6,7 @@ import java.util.Scanner;
  *
  */
 public class Parser {
-	private CommandWords commands;
+	private CommandDictionary commands;
 	private Scanner reader;
 	
 	 /**
@@ -14,14 +14,14 @@ public class Parser {
      */
     public Parser() 
     {
-        commands = new CommandWords();
+        commands = new CommandDictionary();
         reader = new Scanner(System.in);
     }
 	
     /**
      * @return The next command from the user.
      */
-    public Command getCommand() 
+    public InputCommand getCommand() 
     {
         String inputLine;   // will hold the full input line
         String word1 = null;
@@ -41,7 +41,7 @@ public class Parser {
             }
         }
 
-        return new Command(commands.getCommandWord(word1), word2);
+        return new InputCommand(commands.getCommandWord(word1), word2);
     }
 
     /**

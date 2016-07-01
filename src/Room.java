@@ -92,7 +92,7 @@ public class Room {
      *  @return A description of the room, including exits and items.
      */
     public String getCompleteDescription() {
-        return "You are " + description + "\n" + getItemString() + "\n" + getExitString() + "\n";
+        return "You are " + description + "\n" + "You see " + getItemString() + "\n" + getExitString() + "\n";
     }
     
     /**
