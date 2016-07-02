@@ -174,7 +174,7 @@ public class Game {
     	}
     	else {
     		System.out.println(itemToSearch.getSearchedText());
-    		System.out.println("You picked up " + itemToSearch.getContains().getName());
+    		System.out.println("You picked up " + itemToSearch.getContains().getName() + "\n");
     		player.setInventory(itemToSearch.getContains());
     		player.getCurrentRoom().removeItemFromRoom(itemToSearch.getName());
     	}

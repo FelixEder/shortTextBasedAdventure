@@ -18,6 +18,7 @@ public class Item {
 		this.description = description;
 		this.searchable = searchable;
 		this.contains = contains;
+		this.liftable = liftable;
 	}
 
 	public void setSearchedText(String content) {
