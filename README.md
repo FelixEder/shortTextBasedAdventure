@@ -8,6 +8,8 @@ Each features a puzzle that also pushes the story forward. It is a mysterious ad
 
 It should be available in Swedish, English and German, something that should be chosen before starting the game.
 
+THIS GAME HAS BEEN PUT ON HOLD UNTIL I FINISH "RETROFUTUREGAME".
+
 **Testing strategy**
 
 All the lower classes should be tested with JUnit. The bigger ones, like Game, could be tested by play-testing.
