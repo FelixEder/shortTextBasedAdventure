@@ -41,8 +41,8 @@ public class Game {
 		
 		Item icepicks, snowpile;
 		
-		icepicks = new Item("Icepicks", "two pair of ice picks, makes for a good grip on ice.", false, null, true);
-		snowpile = new Item("Snowpile", "a medium sized snowpile, the one you made when you fell down here.", true, icepicks, false);
+		icepicks = new Item("ice picks", "two pair of ice picks, makes for a good grip on ice.", false, null, true);
+		snowpile = new Item("snowpile", "a medium sized snowpile, the one you made when you fell down here.", true, icepicks, false);
 		snowpile.setSearchedText("Searching the pile of snow, you find " + snowpile.getContains().getDescription());
 		
 		platform.addItem(snowpile);
