@@ -39,16 +39,16 @@ public class Game {
 	
 		player.setCurrentRoom(platform);
 		
-		Item icePicks, snowPile;
+		Item icepicks, snowpile;
 		
-		icePicks = new Item("Icepicks", "two pair of ice picks, makes for a good grip on ice.", false, null, true);
-		snowPile = new Item("Snowpile", "a medium sized pile of snow, the one you made when you fell down here.", true, icePicks, false);
-		snowPile.setSearchedText("Searching the pile of snow, you find " + snowPile.getContains().getDescription());
+		icepicks = new Item("Icepicks", "two pair of ice picks, makes for a good grip on ice.", false, null, true);
+		snowpile = new Item("Snowpile", "a medium sized snowpile, the one you made when you fell down here.", true, icepicks, false);
+		snowpile.setSearchedText("Searching the pile of snow, you find " + snowpile.getContains().getDescription());
 		
-		platform.addItem(snowPile);
+		platform.addItem(snowpile);
 		
 		platform.setExit("up", camp, "You try to climb the icy wall,  only to lose your grip and fall down on the pile of snow",
-		"With your ice picks, you scale the wall as if it was horizontal.",icePicks);
+		"With your ice picks, you scale the wall as if it was horizontal.",icepicks);
 		camp.setExit("west", techInSnow, "", "", null);
 		camp.setExit("down", platform, "", "", null);
 		
