@@ -7,7 +7,6 @@ import java.util.Scanner;
  */
 public class Parser {
 	private CommandDictionary commands;
-	private Scanner reader;
 	
 	 /**
      * Create a parser to read from the terminal window.
@@ -15,7 +14,6 @@ public class Parser {
     public Parser() 
     {
         commands = new CommandDictionary();
-        reader = new Scanner(System.in);
     }
 	
     /**
@@ -27,9 +25,9 @@ public class Parser {
         String word1 = null;
         String word2 = null;
 
-        System.out.print("> ");     // print prompt
+        //System.out.print("> ");     // print prompt
 
-        inputLine = reader.nextLine();
+        inputLine = Main.getTextField();
 
         // Find up to two words on the line.
         @SuppressWarnings("resource")
