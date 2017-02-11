@@ -5,16 +5,6 @@ public class Game {
 	private String language;
 	
 	/**
-	 * Main method, creates the game and starts it.
-	 * @param args The first word is the language to be played, the second is the name of the player
-	 */
-	public static void main(String[] args) {
-		Game game = new Game(args[0], args[1]);
-		game.play();
-
-	}
-	
-	/**
 	 * Constructor for game
 	 * @param language The language to be played
 	 * @param playerName The name of the game.
@@ -48,7 +38,8 @@ public class Game {
 		platform.addItem(snowpile);
 		
 		platform.setExit("up", camp, "You try to climb the icy wall,  only to lose your grip and fall down on the pile of snow",
-		"With your ice picks, you scale the wall as if it was horizontal.",icepicks);
+		"With your ice picks, you scale the wal" +
+		"l as if it was horizontal.",icepicks);
 		camp.setExit("west", techInSnow, "", "", null);
 		camp.setExit("down", platform, "", "", null);
 		
@@ -65,21 +56,21 @@ public class Game {
 			InputCommand inputCommand = parser.getCommand();
 			done = processCommand(inputCommand);
 		}
-		System.out.println("Thanks for enjoying my little game, have a nice day." + "\n");
+		Main.printGameInfo("Thanks for enjoying my little game, have a nice day." + "\n");
 	}
 	
 	/**
 	 * The text that is printed out in beginning of the game.
 	 */
 	private void printStartMessage() {
-		System.out.println();
-		System.out.println("Welcome to my game!");
-        System.out.println();
-		System.out.println("You are on an expedition in the Andes of South America.");
-		System.out.println("However, you are currently falling down a cliff.");
-		System.out.println("Suddenly, you land on a small platform");
-        System.out.println("Type '" + parser.getSpecificKey() + "' if you need help.");
-		System.out.println();
+		Main.printGameInfo("");
+		Main.printGameInfo("Welcome to my game!");
+        Main.printGameInfo("");
+		Main.printGameInfo("You are on an expedition in the Andes of South America.");
+		Main.printGameInfo("However, you are currently falling down a cliff.");
+		Main.printGameInfo("Suddenly, you land on a small platform");
+        Main.printGameInfo("Type '" + parser.getSpecificKey() + "' if you need help.");
+		Main.printGameInfo("");
 		printLocationInfo();
 	}
 	
@@ -127,11 +118,11 @@ public class Game {
 			break;
 	          
 		case ITEMS:
-			System.out.println(player.getInventoryString() + "\n");
+			Main.printGameInfo(player.getInventoryString() + "\n");
 			break;
 			
 		default:   
-			System.out.println("I don't know what you mean..." + "\n");
+			Main.printGameInfo("I don't know what you mean..." + "\n");
             break;
 		}
 		return wantToQuit;
@@ -145,7 +136,7 @@ public class Game {
     private boolean quit(InputCommand inputCommand) 
     {
         if(inputCommand.hasSecondWord()) {
-            System.out.println("Quit what?" + "\n");
+            Main.printGameInfo("Quit what?" + "\n");
             return false;
         }
         else {
@@ -159,22 +150,22 @@ public class Game {
      */
     private void search(InputCommand inputCommand) {
     	if(!inputCommand.hasSecondWord()) {
-    		System.out.println("Search what?" + "\n");
+    		Main.printGameInfo("Search what?" + "\n");
     		return;
     	}
     	String item = inputCommand.getSecondWord();
     	Item itemToSearch = player.getCurrentRoom().getRoomItem(item);
     	if(itemToSearch == null) {
-    		System.out.println("There is no such item in this area!" + "\n");
+    		Main.printGameInfo("There is no such item in this area!" + "\n");
     		return;
     	}
     	else if(!itemToSearch.isSearchable()){
-    		System.out.println(itemToSearch.getName() + " can't be searched!" + "\n");
+    		Main.printGameInfo(itemToSearch.getName() + " can't be searched!" + "\n");
     		return;
     	}
     	else {
-    		System.out.println(itemToSearch.getSearchedText());
-    		System.out.println("You picked up " + itemToSearch.getContains().getName() + "\n");
+    		Main.printGameInfo(itemToSearch.getSearchedText());
+    		Main.printGameInfo("You picked up " + itemToSearch.getContains().getName() + "\n");
     		player.setInventory(itemToSearch.getContains());
     		player.getCurrentRoom().removeItemFromRoom(itemToSearch.getName());
     	}
@@ -187,13 +178,13 @@ public class Game {
      */
     private void printHelp() 
     {
-        System.out.println("You are lost. You are alone. You wander");
-        System.out.println("around the Andes.");
-        System.out.println();
-        System.out.println("Your command words are:");
+        Main.printGameInfo("You are lost. You are alone. You wander");
+        Main.printGameInfo("around the Andes.");
+        Main.printGameInfo("");
+        Main.printGameInfo("Your command words are:");
         parser.showCommands();
-        System.out.println();
-        System.out.println();
+        Main.printGameInfo("");
+        Main.printGameInfo("");
     }
     
     /** 
@@ -205,22 +196,22 @@ public class Game {
 	private void goRoom(InputCommand inputCommand) {
 		if(!inputCommand.hasSecondWord()) {
             // if there is no second word, we don't know where to go...
-            System.out.println("Go where?" + "\n");
+            Main.printGameInfo("Go where?" + "\n");
             return;
         }
 		String direction = inputCommand.getSecondWord();
 		Room.ExitReq nextRoom = player.getCurrentRoom().getExit(direction);
 		 if (nextRoom == null) {
-	            System.out.println("There is no exit in that direction!" + "\n");
+	            Main.printGameInfo("There is no exit in that direction!" + "\n");
 		 }
 		 else if(nextRoom.itemNeeded == null || player.getInventory(nextRoom.itemNeeded.getName()) != null){
 			 player.setRoomHistory();
 			 player.setCurrentRoom(nextRoom.exitRoom);
-			 System.out.println(nextRoom.successExit + "\n");
+			 Main.printGameInfo(nextRoom.successExit + "\n");
 			 printLocationInfo();
 		 }
 		 else {
-			 System.out.println(nextRoom.failedExit + "\n");
+			 Main.printGameInfo(nextRoom.failedExit + "\n");
 		 }
 	}
 	
@@ -231,10 +222,10 @@ public class Game {
     private void back(InputCommand inputCommand) {
         if(inputCommand.hasSecondWord()) {
             if(inputCommand.getSecondWord().equals("back")) {
-                System.out.println("Back back where?" + "\n");
+                Main.printGameInfo("Back back where?" + "\n");
             }
             else {
-                System.out.println("Back where?" + "\n");
+                Main.printGameInfo("Back where?" + "\n");
             }
        } 
         else if(!player.checkIfEmpty()) {
@@ -242,7 +233,7 @@ public class Game {
            printLocationInfo();
         }
         else {
-            System.out.println("From here on, you can't go back further." + "\n" );
+            Main.printGameInfo("From here on, you can't go back further." + "\n" );
         }
     }
 	
@@ -253,23 +244,23 @@ public class Game {
      */
     private void pickUpItem(InputCommand inputCommand) {
         if(!inputCommand.hasSecondWord()) {
-            System.out.println("Take what?" + "\n");
+            Main.printGameInfo("Take what?" + "\n");
             return;
         }
         else if(player.getCurrentRoom().isItemInRoom(inputCommand.getSecondWord())) {
         	Item itemToPick = player.getCurrentRoom().getRoomItem(inputCommand.getSecondWord());
         	if(itemToPick.isLiftable()) {
                     player.setInventory(itemToPick);
-                    System.out.println("Picked up " + itemToPick.getName() + "." + "\n");
+                    Main.printGameInfo("Picked up " + itemToPick.getName() + "." + "\n");
                     return;
                 } 
         	else {
-        		System.out.println(itemToPick.getName() + " can't be picked up!" + "\n");
+        		Main.printGameInfo(itemToPick.getName() + " can't be picked up!" + "\n");
         		return;
         	}
         }
         else {
-            System.out.println("The mentioned item is not located in the room!" + "\n");
+            Main.printGameInfo("The mentioned item is not located in the room!" + "\n");
         }
     }
     
@@ -279,7 +270,7 @@ public class Game {
      */
     private void dropItems(InputCommand inputCommand) {
         if(!inputCommand.hasSecondWord()) {
-            System.out.println("Drop what?" + "\n");
+            Main.printGameInfo("Drop what?" + "\n");
             return;
         }
         Item itemToDrop = player.getInventory(inputCommand.getSecondWord());
@@ -287,7 +278,7 @@ public class Game {
             player.removeInventory(itemToDrop.getName());
        }
         else {
-            System.out.println("The mentioned item is not in your inventory!" + "\n");
+            Main.printGameInfo("The mentioned item is not in your inventory!" + "\n");
         }
     }
 	
@@ -295,6 +286,6 @@ public class Game {
 	 * Prints the complete information regarding a room and it's content
 	 */
 	private void printLocationInfo() {
-		System.out.println(player.getCurrentRoom().getCompleteDescription());
+		Main.printGameInfo(player.getCurrentRoom().getCompleteDescription());
 	}
 }

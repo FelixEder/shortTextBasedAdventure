@@ -50,7 +50,7 @@ public class CommandDictionary
         for(String command : validCommands.keySet()) {
             System.out.print(command + "  ");
         }
-        System.out.println();
+        Main.printGameInfo("");
     }
     
     /**

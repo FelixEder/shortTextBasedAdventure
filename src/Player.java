@@ -63,7 +63,7 @@ public class Player {
     public void removeInventory(String invItem) {
         Item itemToDrop = inventory.remove(invItem);
         currentRoom.addItem(itemToDrop);
-        System.out.println("You dropped " + itemToDrop.getName() + "." + "\n");
+        Main.printGameInfo("You dropped " + itemToDrop.getName() + "." + "\n");
     }
     
     /**
