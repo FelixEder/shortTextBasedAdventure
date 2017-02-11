@@ -57,6 +57,9 @@ Slut
 
 En idé kan vara att först hålla huvudkaraktären hemlig, men sen ju längre handligen går framät utveckla dig mer, tills man kommer fram till något bra i huset i slutet, men kanske är lite over-kill. Tänk över det.
 
+En till idé kan vara att spelaren kanske inte är ond eller elak från början, utan att skatten som ni hittar har någon förbannelse över sig eller så. Isåfall så måste detta hintas och byggas en atomsfär kring innan. Kom även på ett bra slut, utöver att du dödar din kamrat. Typ att du styr din onda själv och allt leder till en tillfredställande klimax.
+
+
 **Ideér**
 
 Introt
