@@ -48,7 +48,7 @@ public class CommandDictionary
      */
     public void showAll() {
         for(String command : validCommands.keySet()) {
-            System.out.print(command + "  ");
+            Main.printGameInfo(command + "  ");
         }
         Main.printGameInfo("");
     }
