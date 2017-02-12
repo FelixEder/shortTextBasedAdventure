@@ -47,10 +47,11 @@ public class CommandDictionary
      * Print all valid commands to System.out.
      */
     public void showAll() {
+        String itemString = "";
         for(String command : validCommands.keySet()) {
-            Main.printGameInfo(command + "  ");
+        	itemString += command + "   ";
         }
-        Main.printGameInfo("");
+        	Main.printGameInfo(itemString);
     }
     
     /**
