@@ -8,8 +8,6 @@ Each features a puzzle that also pushes the story forward. It is a mysterious ad
 
 It should be available in Swedish, English and German, something that should be chosen before starting the game.
 
-THIS GAME HAS BEEN PUT ON HOLD UNTIL I FINISH "RETROFUTUREGAME".
-
 **Testing strategy**
 
 All the lower classes should be tested with JUnit. The bigger ones, like Game, could be tested by play-testing.
@@ -58,6 +56,9 @@ Efter de två-tre scenariona är avklarade så kommer man förbi ett mystiskt hu
 Slut
 
 En idé kan vara att först hålla huvudkaraktären hemlig, men sen ju längre handligen går framät utveckla dig mer, tills man kommer fram till något bra i huset i slutet, men kanske är lite over-kill. Tänk över det.
+
+En till idé kan vara att spelaren kanske inte är ond eller elak från början, utan att skatten som ni hittar har någon förbannelse över sig eller så. Isåfall så måste detta hintas och byggas en atomsfär kring innan. Kom även på ett bra slut, utöver att du dödar din kamrat. Typ att du styr din onda själv och allt leder till en tillfredställande klimax.
+
 
 **Ideér**
 
