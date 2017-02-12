@@ -38,8 +38,7 @@ public class Game {
 		platform.addItem(snowpile);
 		
 		platform.setExit("up", camp, "You try to climb the icy wall,  only to lose your grip and fall down on the pile of snow",
-		"With your ice picks, you scale the wall" +
-		"as if it was horizontal.",icepicks);
+		"With your ice picks, you scale the wall as if it was horizontal.",icepicks);
 		camp.setExit("west", techInSnow, "", "", null);
 		camp.setExit("down", platform, "", "", null);
 		

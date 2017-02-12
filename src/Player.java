@@ -73,7 +73,7 @@ public class Player {
     public String getInventoryString() {
         String returnString = "Inventory:";
         for(String key : inventory.keySet()) {
-            returnString += " " + key;
+            returnString += "  " + key;
         }
         return returnString;
     }

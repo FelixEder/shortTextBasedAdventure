@@ -81,7 +81,7 @@ public class Main extends Application {
 		});
 
 		//Settings for the borderPane, can be changed later
-		base.setPrefSize(800, 800);
+		base.setPrefSize(1000, 1000);
 		base.setStyle("-fx-padding: 10;" +
                 "-fx-border-style: solid inside;" +
                 "-fx-border-width: 2;" +
@@ -91,7 +91,7 @@ public class Main extends Application {
 		
 		Scene scene = new Scene(base);
 		stage.setScene(scene);
-		stage.setTitle("The Farmhouse");
+		stage.setTitle("The Expedition");
 		stage.show();
 		
 		//Starts a new Javafx thread and launches the game on it.
