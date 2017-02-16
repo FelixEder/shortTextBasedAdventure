@@ -2,7 +2,7 @@ import java.util.HashMap;
 
 /**
  * The Room class, which keeps information regarding the different rooms.
- * These include desription of room, exits to other rooms and the items in the room.
+ * These include description of room, exits to other rooms and the items in the room.
  * @author felix
  *
  */
@@ -23,8 +23,6 @@ public class Room {
 	
 	/**
 	 * Nested class that sets requirements for when exiting to another room
-	 * @author felix
-	 *
 	 */
 	public class ExitReq {
 		public Room exitRoom;
