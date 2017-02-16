@@ -4,6 +4,7 @@ public class Game {
 	private Player player;
 	private String language;
 	private PlayerActions playerActions;
+	private GameSetup gameSetup;
 	
 	/**
 	 * Constructor for game
@@ -15,36 +16,10 @@ public class Game {
 		player = new Player(playerName);
 		this.language = language;
 		playerActions = new PlayerActions(player, this);
-		setUpGame();
+		gameSetup = new GameSetup(player);
+		gameSetup.setUpGame();
 	}
 
-	/**
-	 * Creates all the different rooms in the game and sets all exits.
-	 */
-	private void setUpGame() {
-		Room platform, camp, techInSnow;
-		
-		platform = new Room("on a small platform sticking out from the mountain. There is a long way up" +
-				" and even longer way down. Up is preferable.");
-		camp = new Room("in a small encampment. There is a camp fire, small tent and a bunch of junk.");
-		techInSnow = new Room("on snow-covered plain. There isn't much here except for a strange box half buried in the snow.");
-	
-		player.setCurrentRoom(platform);
-		
-		Item icepicks, snowpile;
-		
-		icepicks = new Item("ice picks", "two pair of ice picks, makes for a good grip on ice.", false, null, true);
-		snowpile = new Item("snowpile", "a medium sized snowpile, the one you made when you fell down here.", true, icepicks, false);
-		snowpile.setSearchedText("Searching the pile of snow, you find " + snowpile.getContains().getDescription());
-		
-		platform.addItem(snowpile);
-		
-		platform.setExit("up", camp, "You try to climb the icy wall,  only to lose your grip and fall down on the pile of snow",
-		"With your ice picks, you scale the wall as if it was horizontal.",icepicks);
-		camp.setExit("west", techInSnow, "", "", null);
-		camp.setExit("down", platform, "", "", null);
-		
-	}
 	
 	/**
 	 * Starts the infinite loop that is used when the game is running
@@ -74,6 +49,22 @@ public class Game {
 		Main.printGameInfo("");
 		playerActions.printLocationInfo();
 	}
+	
+    /**
+     * Print out some help information.
+     * Here we print some stupid, cryptic message and a list of the 
+     * command words.
+     */
+    private void printHelp() 
+    {
+        Main.printGameInfo("You are lost. You are alone. You wander");
+        Main.printGameInfo("around the Andes.");
+        Main.printGameInfo("");
+        Main.printGameInfo("Your command words are:");
+        parser.showCommands();
+        Main.printGameInfo("");
+        Main.printGameInfo("");
+    }
 	
 	/**
 	 * Processes the commands from the player
@@ -144,22 +135,4 @@ public class Game {
             return true;  // signal that we want to quit
         }
     }
-
-    
-    /**
-     * Print out some help information.
-     * Here we print some stupid, cryptic message and a list of the 
-     * command words.
-     */
-    private void printHelp() 
-    {
-        Main.printGameInfo("You are lost. You are alone. You wander");
-        Main.printGameInfo("around the Andes.");
-        Main.printGameInfo("");
-        Main.printGameInfo("Your command words are:");
-        parser.showCommands();
-        Main.printGameInfo("");
-        Main.printGameInfo("");
-    }
-
 }

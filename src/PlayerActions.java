@@ -1,4 +1,8 @@
-
+/**
+ * This class takes care of all the actions made by the player.
+ * @author felix
+ *
+ */
 public class PlayerActions {
     Player player;
 	Game game;
