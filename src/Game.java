@@ -22,10 +22,10 @@ public class Game {
 	private void setUpGame() {
 		Room platform, camp, techInSnow;
 		
-		platform = new Room(" on a small platform sticking out from the mountain. There is a long way up" +
+		platform = new Room("on a small platform sticking out from the mountain. There is a long way up" +
 				" and even longer way down. Up is preferable.");
-		camp = new Room(" in a small encampment. There is a camp fire, small tent and a bunch of junk.");
-		techInSnow = new Room(" on snow-covered plain. There isn't much here except for a strange box half buried in the snow.");
+		camp = new Room("in a small encampment. There is a camp fire, small tent and a bunch of junk.");
+		techInSnow = new Room("on snow-covered plain. There isn't much here except for a strange box half buried in the snow.");
 	
 		player.setCurrentRoom(platform);
 		
