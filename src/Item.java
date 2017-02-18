@@ -20,7 +20,23 @@ public class Item {
 		this.contains = contains;
 		this.liftable = liftable;
 	}
-
+	
+	/**
+	 * Nested class that sets requirements for searching items
+	 */
+	public class SearchReq {
+		public Item[] storedItems;
+		public String failedSearch, successSearch;
+		public Item itemNeeded;
+		
+		private SearchReq(Item[] storedItems, String failedSearch, String successSearch, Item itemNeeded) {
+			this.storedItems = storedItems;
+			this.failedSearch = failedSearch;
+			this.successSearch = successSearch;
+			this.itemNeeded = itemNeeded;
+		}
+	}
+	
 	public void setSearchedText(String content) {
 		searchedText = content;
 	}
