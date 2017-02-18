@@ -6,14 +6,14 @@
 public class Item {
 	private String name, description, searchedText;
 	private boolean searchable, liftable;
-	private Item contains;
+	private SearchReq contains;
 	
 	/**
 	 * Constructor, sets the two fields of the class
 	 * @param name The name of the item
 	 * @param description The description of the item
 	 */
-	public Item(String name, String description, boolean searchable, Item contains, boolean liftable) {
+	public Item(String name, String description, boolean searchable, SearchReq contains, boolean liftable) {
 		this.name = name;
 		this.description = description;
 		this.searchable = searchable;
@@ -59,12 +59,13 @@ public class Item {
 		return searchable;
 	}
 	
+	
 	/**
 	 * @return The item contained.
 	 */
-	public Item getContains() {
-		return contains;
-	}
+	//public Item getContains() {
+	//	return contains;
+	//}
 	
 	/**
 	 * @return The description of the item
