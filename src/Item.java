@@ -13,11 +13,10 @@ public class Item {
 	 * @param name The name of the item
 	 * @param description The description of the item
 	 */
-	public Item(String name, String description, boolean searchable, SearchReq contains, boolean liftable) {
+	public Item(String name, String description, boolean searchable, boolean liftable) {
 		this.name = name;
 		this.description = description;
 		this.searchable = searchable;
-		this.contains = contains;
 		this.liftable = liftable;
 	}
 	
@@ -37,8 +36,15 @@ public class Item {
 		}
 	}
 	
-	public void setSearchedText(String content) {
-		searchedText = content;
+	/**
+	 * Creates a searchReq for the item.
+	 * @param storedItems The items stored in the item.
+	 * @param failedSearch Text printed when failing to open this item.
+	 * @param successSearch Text succeeding when failing to open item.
+	 * @param itemNeeded The item needed to open this item.
+	 */
+	public void setSearchedReq(Item[] storedItems, String failedSearch, String successSearch, Item itemNeeded) {
+		contains = new SearchReq(storedItems, failedSearch, successSearch, itemNeeded);
 	}
 	
 	public String getSearchedText() {

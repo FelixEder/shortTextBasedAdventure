@@ -31,12 +31,15 @@ public class GameSetup {
 		
 		Item icepicks, snowpile, box, locker, key, map;
 		
-		icepicks = new Item("ice picks", "two pair of ice picks, makes for a good grip on ice.", false, null, true);
-		snowpile = new Item("snowpile", "a medium sized snowpile, the one you made when you fell down here.", true, icepicks, false);
-		snowpile.setSearchedText("Searching the pile of snow, you find " + snowpile.getContains().getDescription());
+		icepicks = new Item("ice picks", "two pair of ice picks, makes for a good grip on ice.", false, true);
+		snowpile = new Item("snowpile", "a medium sized snowpile, the one you made when you fell down here.", true, false);
 		
-		key = new Item("key", "a small key.", false, null, true);
-		box = new Item("box", "a strange box half buried in the snow.", true, key, false);
+		
+		
+		snowpile.setSearchedReq(new Item[] {icepicks}, "", "Searching the pile of snow, you find " + icepicks.getDescription(), null);
+		
+		key = new Item("key", "a small key.", false, true);
+		box = new Item("box", "a strange box half buried in the snow.", true, false);
 		box.setSearchedText("Searching the box, you find " + box.getContains().getDescription());
 		
 		map = new Item("map", "a laminated high-quality map of the surrounding area.", false, null, true);
