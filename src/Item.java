@@ -69,9 +69,9 @@ public class Item {
 	/**
 	 * @return The item contained.
 	 */
-	//public Item getContains() {
-	//	return contains;
-	//}
+	public SearchReq getContains() {
+		return contains;
+	}
 	
 	/**
 	 * @return The description of the item
