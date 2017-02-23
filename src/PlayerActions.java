@@ -140,9 +140,9 @@ public class PlayerActions {
     	}
     	else {
     		Main.printGameInfo(itemToSearch.getSearchedText());
-    		for(int i = 0; i < itemToSearch.SearchReq.storedItems.size(); i++) {
-    			Main.printGameInfo("You picked up " + itemToSearch.SearchReq.storedItem[i].getName() + "\n");
-        		player.setInventory(itemToSearch.SearchReq.storedItem[i]);
+    		for(int i = 0; i < itemToSearch.getContains().storedItems.length; i++) {
+    			Main.printGameInfo("You picked up " + itemToSearch.getContains().storedItems[i].getName() + "\n");
+        		player.setInventory(itemToSearch.getContains().storedItems[i]);
     		}
     		player.getCurrentRoom().removeItemFromRoom(itemToSearch.getName());
     	}
