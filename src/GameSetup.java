@@ -29,17 +29,19 @@ public class GameSetup {
 		
 		player.setCurrentRoom(platform);
 		
-		Item icepicks, snowpile, box, locker, key, map;
+		Item icepicks, snowpile, box, locker, key, map, picture;
 		
-		icepicks = new Item("ice picks", "A pair of ice picks, makes for a good grip on ice.", false, true);
+		icepicks = new Item("icepicks", "A pair of ice picks, makes for a good grip on ice.", false, true);
 		snowpile = new Item("snowpile", "a medium sized snowpile, the one you made when you fell down here.", true, false);	
 		snowpile.setSearchedReq(new Item[] {icepicks}, "", "You stick your hands into the freezing snow and start searching, wondering why you would ever do such a  thing." + "\n"
-		+ "Finally, you find: ", null);
+		+ "Finally, you find:", null);
 	
-		key = new Item("key", "a small key.", false, true);
+		key = new Item("key", "A small key.", false, true);
+		picture = new Item("picture", "A picture, on it you see three men with big smiles." + "\n"
+				+ "It feels eerily familiar.", false, true);
 		box = new Item("box", "a strange box with a rusty lock, half buried in the snow.", true, false);
-		box.setSearchedReq(new Item[] {key}, "You try to open the box with your arms, but the lock wont open.", 
-				"You smash the lock with your ice picks and the box opens. Inside you find " + key.getDescription(), icepicks);
+		box.setSearchedReq(new Item[] {key, picture}, "You try to open the box with your arms, but the lock wont open.", 
+				"You smash the lock with your ice picks and the box opens." + "\n" +  "Inside you find: ", icepicks);
 		
 		map = new Item("map", "a laminated high-quality map of the surrounding area.", false, true);
 		locker = new Item("locker", "a sturdy locker inside the helicopter. Closed of course.", true, false);

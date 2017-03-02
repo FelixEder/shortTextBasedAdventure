@@ -145,7 +145,7 @@ public class PlayerActions {
     	}
     
     	else {
-    		Main.printGameInfo(itemToSearch.getContains().successSearch);
+    		Main.printGameInfo(itemToSearch.getContains().successSearch + "\n");
     		for(int i = 0; i < itemToSearch.getContains().storedItems.length; i++) {
     			Main.printGameInfo(itemToSearch.getContains().storedItems[i].getDescription() + "\n");
         		player.setInventory(itemToSearch.getContains().storedItems[i]);
