@@ -29,7 +29,7 @@ public class GameSetup {
 		
 		player.setCurrentRoom(platform);
 		
-		Item icepicks, snowpile, box, locker, key, map, picture;
+		Item icepicks, snowpile, box, locker, key, map, picture, audioLog;
 		
 		icepicks = new Item("icepicks", "A pair of ice picks, makes for a good grip on ice.", false, true);
 		snowpile = new Item("snowpile", "a medium sized snowpile, the one you made when you fell down here.", true, false);	
@@ -43,13 +43,21 @@ public class GameSetup {
 		box.setSearchedReq(new Item[] {key, picture}, "You try to open the box with your arms, but the lock wont open.", 
 				"You smash the lock with your ice picks and the box opens." + "\n" +  "Inside you find: ", icepicks);
 		
-		map = new Item("map", "a laminated high-quality map of the surrounding area.", false, true);
+		map = new Item("map", "A laminated high-quality map of the surrounding area.", false, true);
+		audioLog = new Item("audiolog", "A little cassette. You put it in your trusy cassette player and you listen to it:" + "\n" + "\n"
+				+"\"Day three of the expedtion. We are closing in on the spot, but the wheather keeps getting worse.\"" + "\n"
+				+ "\"What have you done?! You lead us into a storm!\"" + "\n" + "\n"
+				+ "You start to hear the sound of the helicopter's engines struggling." + "\n" + "\n" +
+				"\"It's all your fault, we'll take over from here!\"" + "\n" + "\n" +
+				 "A brawl breaks out, followed by men screaming and crashing sound." + "\n" + "\n" +
+				"The audio log has ended, but you remain in deep thought after what you just heard.", false, true);
 		locker = new Item("locker", "a sturdy locker inside the helicopter. Closed of course.", true, false);
-		locker.setSearchedReq(new Item[] {map},"You try your darndest to pry open the locker, but to no avail",
-				"You use the key and the locker opens. Inside you find " + map.getDescription(), key);
+		locker.setSearchedReq(new Item[] {map, audioLog},"You try your darndest to pry open the locker, but to no avail",
+				"You use the key and the locker opens. Inside you find: ", key);
 				
 		platform.addItem(snowpile);
 		techInSnow.addItem(box);
+		helicopter.addItem(locker);
 		
 		platform.setExit("up", camp, "You try to climb the icy wall,  only to lose your grip and fall down on the pile of snow",
 		"With your ice picks, you scale the wall as if it was horizontal.", icepicks);
