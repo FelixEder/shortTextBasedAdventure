@@ -33,8 +33,9 @@ public class GameSetup {
 		
 		icepicks = new Item("ice picks", "two pair of ice picks, makes for a good grip on ice.", false, true);
 		snowpile = new Item("snowpile", "a medium sized snowpile, the one you made when you fell down here.", true, false);	
-		snowpile.setSearchedReq(new Item[] {icepicks}, "", "Searching the pile of snow, you find " + icepicks.getDescription(), null);
-		
+		snowpile.setSearchedReq(new Item[] {icepicks}, "", "You stick your hands into the freezing snow and start searching, wondering why you would ever do sucha  thing." + "\n"
+		+ "Finally, you find: ", null);
+	
 		key = new Item("key", "a small key.", false, true);
 		box = new Item("box", "a strange box with a rusty lock, half buried in the snow.", true, false);
 		box.setSearchedReq(new Item[] {key}, "You try to open the box with your arms, but the lock wont open.", 

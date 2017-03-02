@@ -138,10 +138,16 @@ public class PlayerActions {
     		Main.printGameInfo(itemToSearch.getName() + " can't be searched!" + "\n");
     		return;
     	}
+    	
+    	else if(player.getInventory(itemToSearch.getContains().itemNeeded.getName()) == null) {
+    		Main.printGameInfo("You try searching it, but you can't get it open." + "\n" +
+    				"It seems like you need another item");
+    	}
+    	
     	else {
-    		Main.printGameInfo(itemToSearch.getSearchedText());
+    		Main.printGameInfo(itemToSearch.getContains().successSearch);
     		for(int i = 0; i < itemToSearch.getContains().storedItems.length; i++) {
-    			Main.printGameInfo("You picked up " + itemToSearch.getContains().storedItems[i].getName() + "\n");
+    			Main.printGameInfo(itemToSearch.getContains().storedItems[i].getDescription() + "\n");
         		player.setInventory(itemToSearch.getContains().storedItems[i]);
     		}
     		player.getCurrentRoom().removeItemFromRoom(itemToSearch.getName());

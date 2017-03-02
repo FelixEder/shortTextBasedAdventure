@@ -4,7 +4,7 @@
  *
  */
 public class Item {
-	private String name, description, searchedText;
+	private String name, description;
 	private boolean searchable, liftable;
 	private SearchReq contains;
 	
@@ -45,10 +45,6 @@ public class Item {
 	 */
 	public void setSearchedReq(Item[] storedItems, String failedSearch, String successSearch, Item itemNeeded) {
 		contains = new SearchReq(storedItems, failedSearch, successSearch, itemNeeded);
-	}
-	
-	public String getSearchedText() {
-		return searchedText;
 	}
 	
 	/**
