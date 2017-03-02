@@ -31,9 +31,9 @@ public class GameSetup {
 		
 		Item icepicks, snowpile, box, locker, key, map;
 		
-		icepicks = new Item("ice picks", "two pair of ice picks, makes for a good grip on ice.", false, true);
+		icepicks = new Item("ice picks", "A pair of ice picks, makes for a good grip on ice.", false, true);
 		snowpile = new Item("snowpile", "a medium sized snowpile, the one you made when you fell down here.", true, false);	
-		snowpile.setSearchedReq(new Item[] {icepicks}, "", "You stick your hands into the freezing snow and start searching, wondering why you would ever do sucha  thing." + "\n"
+		snowpile.setSearchedReq(new Item[] {icepicks}, "", "You stick your hands into the freezing snow and start searching, wondering why you would ever do such a  thing." + "\n"
 		+ "Finally, you find: ", null);
 	
 		key = new Item("key", "a small key.", false, true);

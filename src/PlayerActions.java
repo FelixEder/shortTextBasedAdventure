@@ -138,12 +138,12 @@ public class PlayerActions {
     		Main.printGameInfo(itemToSearch.getName() + " can't be searched!" + "\n");
     		return;
     	}
-    	
-    	else if(player.getInventory(itemToSearch.getContains().itemNeeded.getName()) == null) {
+
+    	else if(!player.hasItem(itemToSearch.getContains().itemNeeded) && !(itemToSearch.getContains().itemNeeded == null)) {
     		Main.printGameInfo("You try searching it, but you can't get it open." + "\n" +
-    				"It seems like you need another item");
+    				"It seems like you need another item.");
     	}
-    	
+    
     	else {
     		Main.printGameInfo(itemToSearch.getContains().successSearch);
     		for(int i = 0; i < itemToSearch.getContains().storedItems.length; i++) {

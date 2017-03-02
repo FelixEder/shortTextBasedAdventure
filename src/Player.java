@@ -55,6 +55,15 @@ public class Player {
 	public Item getInventory(String itemName) {
 		return inventory.get(itemName);
 	}
+	
+	/**
+	 * Checks if a given item exists in the player's inventory.
+	 * @param item the name of the item to be checked.
+	 * @return
+	 */
+	public boolean hasItem(Item item) {
+		return inventory.containsValue(item);
+	}
 	   
     /**
      * Removes an item from inventory and prints out information.
