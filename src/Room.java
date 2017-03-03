@@ -90,7 +90,12 @@ public class Room {
      *  @return A description of the room, including exits and items.
      */
     public String getCompleteDescription() {
-        return "You are " + description + "\n" + "You see " + getItemString() + "\n" + getExitString() + "\n";
+    	StringBuilder sb = new StringBuilder("You are " + description + "\n");
+    	if(!itemsInRoom.isEmpty()) {
+    		sb.append("You see " + getItemString());
+    	}
+    	sb.append("\n" + getExitString() + "\n");
+        return sb.toString();
     }
     
     /**
