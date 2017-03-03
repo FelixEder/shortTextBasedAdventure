@@ -12,8 +12,10 @@ public class Collectibles extends Element {
 		this.pickUpText = pickUpText;
 	}
 	
+	/**
+	 * @return the pickUpText.
+	 */
 	public String getPickUpText() {
 		return pickUpText;
 	}
-
 }

@@ -29,7 +29,8 @@ public class GameSetup {
 		
 		player.setCurrentRoom(platform);
 		
-		Item icepicks, snowpile, box, locker, key, map, picture, audioLog;
+		Item icepicks, snowpile, box, locker, key, map;
+		Collectibles picture, audioLog;
 		
 		icepicks = new Item("icepicks", "A pair of ice picks, makes for a good grip on ice.", false, true);
 		snowpile = new Item("snowpile", "a medium sized snowpile, the one you made when you fell down here.", true, false);	
@@ -37,22 +38,22 @@ public class GameSetup {
 		+ "Finally, you find:", null);
 	
 		key = new Item("key", "A small key.", false, true);
-		picture = new Item("picture", "A picture, on it you see three men with big smiles." + "\n"
-				+ "It feels eerily familiar.", false, true);
+		picture = new Collectibles("", "A picture, on it you see three men with big smiles." + "\n"
+				+ "It feels eerily familiar.");
 		box = new Item("box", "a strange box with a rusty lock, half buried in the snow.", true, false);
-		box.setSearchedReq(new Item[] {key, picture}, "You try to open the box with your arms, but the lock wont open.", 
+		box.setSearchedReq(new Element[] {key, picture}, "You try to open the box with your arms, but the lock wont open.", 
 				"You smash the lock with your ice picks and the box opens." + "\n" +  "Inside you find: ", icepicks);
 		
 		map = new Item("map", "A laminated high-quality map of the surrounding area.", false, true);
-		audioLog = new Item("audiolog", "A little cassette. You put it in your trusy cassette player and you listen to it:" + "\n" + "\n"
+		audioLog = new Collectibles("", "A little cassette. You put it in your trusy cassette player and you listen to it:" + "\n" + "\n"
 				+"\"Day three of the expedtion. We are closing in on the spot, but the wheather keeps getting worse.\"" + "\n"
 				+ "\"What have you done?! You lead us into a storm!\"" + "\n" + "\n"
 				+ "You start to hear the sound of the helicopter's engines struggling." + "\n" + "\n" +
 				"\"It's all your fault, we'll take over from here!\"" + "\n" + "\n" +
 				 "A brawl breaks out, followed by men screaming and crashing sound." + "\n" + "\n" +
-				"The audio log has ended, but you remain in deep thought after what you just heard.", false, true);
+				"The audio log has ended, but you remain in deep thought after what you just heard.");
 		locker = new Item("locker", "a sturdy locker inside the helicopter. Closed of course.", true, false);
-		locker.setSearchedReq(new Item[] {map, audioLog},"You try your darndest to pry open the locker, but to no avail",
+		locker.setSearchedReq(new Element[] {map, audioLog},"You try your darndest to pry open the locker, but to no avail",
 				"You use the key and the locker opens. Inside you find: ", key);
 				
 		platform.addItem(snowpile);

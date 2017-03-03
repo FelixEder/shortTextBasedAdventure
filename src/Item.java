@@ -24,11 +24,11 @@ public class Item extends Element{
 	 * Nested class that sets requirements for searching items
 	 */
 	public class SearchReq {
-		public Item[] storedItems;
+		public Element[] storedItems;
 		public String failedSearch, successSearch;
 		public Item itemNeeded;
 		
-		private SearchReq(Item[] storedItems, String failedSearch, String successSearch, Item itemNeeded) {
+		private SearchReq(Element[] storedItems, String failedSearch, String successSearch, Item itemNeeded) {
 			this.storedItems = storedItems;
 			this.failedSearch = failedSearch;
 			this.successSearch = successSearch;
@@ -43,7 +43,7 @@ public class Item extends Element{
 	 * @param successSearch Text succeeding when failing to open item.
 	 * @param itemNeeded The item needed to open this item.
 	 */
-	public void setSearchedReq(Item[] storedItems, String failedSearch, String successSearch, Item itemNeeded) {
+	public void setSearchedReq(Element[] storedItems, String failedSearch, String successSearch, Item itemNeeded) {
 		contains = new SearchReq(storedItems, failedSearch, successSearch, itemNeeded);
 	}
 	
