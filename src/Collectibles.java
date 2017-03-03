@@ -5,9 +5,15 @@
  *
  */
 public class Collectibles extends Element {
+	private String pickUpText;
 
-	public Collectibles(String description) {
+	public Collectibles(String description, String pickUpText) {
 		super.description = description;
+		this.pickUpText = pickUpText;
+	}
+	
+	public String getPickUpText() {
+		return pickUpText;
 	}
 
 }

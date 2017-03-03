@@ -3,8 +3,8 @@
  * @author felix
  *
  */
-public class Item {
-	private String name, description;
+public class Item extends Element{
+	private String name;
 	private boolean searchable, liftable;
 	private SearchReq contains;
 	
@@ -15,7 +15,7 @@ public class Item {
 	 */
 	public Item(String name, String description, boolean searchable, boolean liftable) {
 		this.name = name;
-		this.description = description;
+		super.description = description;
 		this.searchable = searchable;
 		this.liftable = liftable;
 	}
@@ -67,13 +67,6 @@ public class Item {
 	 */
 	public SearchReq getContains() {
 		return contains;
-	}
-	
-	/**
-	 * @return The description of the item
-	 */
-	public String getDescription() {
-		return description;
 	}
 
 	/**
