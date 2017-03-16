@@ -1,6 +1,6 @@
 /**
  * This class takes care of all the actions made by the player.
- * @author felix
+ * @author Felix
  *
  */
 public class PlayerActions {
@@ -85,7 +85,7 @@ public class PlayerActions {
             return;
         }
         else if(player.getCurrentRoom().isItemInRoom(inputCommand.getSecondWord())) {
-        	Item itemToPick = player.getCurrentRoom().getRoomItem(inputCommand.getSecondWord());
+        	Item itemToPick = (Item) player.getCurrentRoom().getRoomItem(inputCommand.getSecondWord());
         	if(itemToPick.isLiftable()) {
                     player.setInventory(itemToPick);
                     Main.printGameInfo("Picked up " + itemToPick.getName() + "." + "\n");
@@ -129,7 +129,14 @@ public class PlayerActions {
     		return;
     	}
     	String item = inputCommand.getSecondWord();
-    	Item itemToSearch = player.getCurrentRoom().getRoomItem(item);
+    	Element elementToSearch = player.getCurrentRoom().getRoomItem(item);
+    	Item itemToSearch;
+    	if(elementToSearch instanceof Collectibles) {
+    		Main.printGameInfo(elementToSearch.getName() + " can't be searched!" + "\n");
+    	}
+    	else 
+    		itemToSearch = (Item) elementToSearch;
+    	
     	if(itemToSearch == null) {
     		Main.printGameInfo("There is no such item in this area!" + "\n");
     		return;

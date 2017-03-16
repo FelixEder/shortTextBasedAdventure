@@ -38,14 +38,14 @@ public class GameSetup {
 		+ "Finally, you find:", null);
 	
 		key = new Item("key", "A small key.", false, true);
-		picture = new Collectibles("", "A picture, on it you see three men with big smiles." + "\n"
+		picture = new Collectibles("", "picture", "A picture, on it you see three men with big smiles." + "\n"
 				+ "It feels eerily familiar.");
 		box = new Item("box", "a strange box with a rusty lock, half buried in the snow.", true, false);
 		box.setSearchedReq(new Element[] {key, picture}, "You try to open the box with your arms, but the lock wont open.", 
 				"You smash the lock with your ice picks and the box opens." + "\n" +  "Inside you find: ", icepicks);
 		
 		map = new Item("map", "A laminated high-quality map of the surrounding area.", false, true);
-		audioLog = new Collectibles("", "A little cassette. You put it in your trusy cassette player and you listen to it:" + "\n" + "\n"
+		audioLog = new Collectibles("", "audioLog", "A little cassette. You put it in your trusy cassette player and you listen to it:" + "\n" + "\n"
 				+"\"Day three of the expedtion. We are closing in on the spot, but the wheather keeps getting worse.\"" + "\n"
 				+ "\"What have you done?! You lead us into a storm!\"" + "\n" + "\n"
 				+ "You start to hear the sound of the helicopter's engines struggling." + "\n" + "\n" +

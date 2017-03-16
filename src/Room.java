@@ -9,7 +9,7 @@ import java.util.HashMap;
 public class Room {
 	private String description;
 	private HashMap<String, ExitReq> exits;
-	private HashMap<String, Item> itemsInRoom;
+	private HashMap<String, Element> elementsInRoom;
 	
 	/**
 	 * The constructor of room
@@ -18,7 +18,7 @@ public class Room {
 	public Room(String description) {
 		this.description = description;
 		exits = new HashMap<String, ExitReq>();
-		itemsInRoom = new HashMap<String, Item>();
+		elementsInRoom = new HashMap<String, Element>();
 	}
 	
 	/**
@@ -80,7 +80,7 @@ public class Room {
      */
     public String getItemString() {
         String returnString = "";
-        for(Item listItems : itemsInRoom.values()) {
+        for(Element listItems : elementsInRoom.values()) {
         	returnString += listItems.getDescription() + "\n";
         }
         return returnString;
@@ -91,7 +91,7 @@ public class Room {
      */
     public String getCompleteDescription() {
     	StringBuilder sb = new StringBuilder("You are " + description + "\n");
-    	if(!itemsInRoom.isEmpty()) {
+    	if(!elementsInRoom.isEmpty()) {
     		sb.append("You see " + getItemString());
     	}
     	sb.append("\n" + getExitString() + "\n");
@@ -104,7 +104,7 @@ public class Room {
      * @return The boolean value true if item is in room, return false if not
      */
     public boolean isItemInRoom(String roomItem) {
-        return itemsInRoom.containsKey(roomItem);
+        return elementsInRoom.containsKey(roomItem);
     }
     
     /**
@@ -112,8 +112,8 @@ public class Room {
      * @param itemName The item the player wants to pick up
      * @return The item the player picked up
      */
-    public Item getRoomItem(String itemName) {
-        return itemsInRoom.get(itemName);
+    public Element getRoomItem(String itemName) {
+        return elementsInRoom.get(itemName);
     }
     
     /**
@@ -121,7 +121,7 @@ public class Room {
      * @param itemName The item to remove from the room
      */
     public void removeItemFromRoom(String itemName) {
-        itemsInRoom.remove(itemName);
+    	elementsInRoom.remove(itemName);
     }
     
     /**
@@ -129,7 +129,7 @@ public class Room {
      * @param itemName The String name of the item to add to the room
      * @param item The object item to add to the room
      */
-    public void addItem(Item item) {
-        itemsInRoom.put(item.getName(), item);
+    public void addItem(Element item) {
+    	elementsInRoom.put(item.getName(), item);
     }
 }

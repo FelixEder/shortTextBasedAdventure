@@ -4,7 +4,6 @@
  *
  */
 public class Item extends Element{
-	private String name;
 	private boolean searchable, liftable;
 	private SearchReq contains;
 	
@@ -14,7 +13,7 @@ public class Item extends Element{
 	 * @param description The description of the item
 	 */
 	public Item(String name, String description, boolean searchable, boolean liftable) {
-		this.name = name;
+		super.name = name;
 		super.description = description;
 		this.searchable = searchable;
 		this.liftable = liftable;
@@ -45,13 +44,6 @@ public class Item extends Element{
 	 */
 	public void setSearchedReq(Element[] storedItems, String failedSearch, String successSearch, Item itemNeeded) {
 		contains = new SearchReq(storedItems, failedSearch, successSearch, itemNeeded);
-	}
-	
-	/**
-	 * @return The name of the item
-	 */
-	public String getName() {
-		return name;
 	}
 	
 	/**

@@ -10,7 +10,7 @@ import java.util.Stack;
 public class Player {
 	private String name;
 	//This could also be an arrayList, they wouldn't function any differently.
-	private HashMap<String, Element> inventory;
+	private HashMap<String, Item> inventory;
 	private Room currentRoom;
 	private Stack<Room> roomHistory;
 	
@@ -20,7 +20,7 @@ public class Player {
 	 */
 	public Player(String name) {
 		this.name = name;
-		inventory = new HashMap<String, Element>();
+		inventory = new HashMap<String, Item>();
 		roomHistory = new Stack<Room>();
 	}
 	
@@ -35,7 +35,7 @@ public class Player {
 	/**
 	 * @return The inventory of the player
 	 */
-	public HashMap<String, Element> getInventory() {
+	public HashMap<String, Item> getInventory() {
 		return inventory;
 	}
 	
@@ -52,7 +52,7 @@ public class Player {
 	 * @param item The item to be returned
 	 * @return The item to be returned
 	 */
-	public Element getInventory(String itemName) {
+	public Item getInventory(String itemName) {
 		return inventory.get(itemName);
 	}
 	
