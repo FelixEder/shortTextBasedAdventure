@@ -133,10 +133,9 @@ public class PlayerActions {
     	Item itemToSearch;
     	if(elementToSearch instanceof Collectibles) {
     		Main.printGameInfo(elementToSearch.getName() + " can't be searched!" + "\n");
+    		return;
     	}
-    	else 
-    		itemToSearch = (Item) elementToSearch;
-    	
+    	itemToSearch = (Item) elementToSearch;
     	if(itemToSearch == null) {
     		Main.printGameInfo("There is no such item in this area!" + "\n");
     		return;
@@ -155,7 +154,8 @@ public class PlayerActions {
     		Main.printGameInfo(itemToSearch.getContains().successSearch + "\n");
     		for(int i = 0; i < itemToSearch.getContains().storedItems.length; i++) {
     			Main.printGameInfo(itemToSearch.getContains().storedItems[i].getDescription() + "\n");
-        		player.setInventory(itemToSearch.getContains().storedItems[i]);
+    			if(itemToSearch.getContains().storedItems[i] instanceof Item)
+    				player.setInventory((Item) itemToSearch.getContains().storedItems[i]);
     		}
     		player.getCurrentRoom().removeItemFromRoom(itemToSearch.getName());
     	}
