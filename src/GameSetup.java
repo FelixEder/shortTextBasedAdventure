@@ -30,16 +30,21 @@ public class GameSetup {
 		player.setCurrentRoom(platform);
 		
 		Item icepicks, snowpile, box, locker, key, map;
-		Collectibles picture, audioLog;
+		Collectibles picture, audioLog, glove, sdIcepicks;
 		
 		icepicks = new Item("icepicks", "A pair of ice picks, makes for a good grip on ice.", false, true);
 		snowpile = new Item("snowpile", "a medium sized snowpile, the one you made when you fell down here.", true, false);	
 		snowpile.setSearchedReq(new Item[] {icepicks}, "", "You stick your hands into the freezing snow and start searching, wondering why you would ever do such a  thing." + "\n"
 		+ "Finally, you find:", null);
 	
+		glove = new Collectibles("glove", " you pick up the glove. It is completely different from the ones you are wearing right now. " + "\n" +
+		"They can't be yours, but to whom do they belong?. You decide to throw them back into the tent.", "some kind of glove lying by the tent.");
+		
+		
+		
 		key = new Item("key", "A small key.", false, true);
 		picture = new Collectibles("picture", "A picture, on it you see three men with big smiles." + "\n"
-				+ "It feels eerily familiar.");
+				+ "It feels eerily familiar.", "");
 		box = new Item("box", "a strange box with a rusty lock, half buried in the snow.", true, false);
 		box.setSearchedReq(new Element[] {key, picture}, "You try to open the box with your arms, but the lock wont open.", 
 				"You smash the lock with your ice picks and the box opens." + "\n" +  "Inside you find: ", icepicks);
@@ -51,11 +56,13 @@ public class GameSetup {
 				+ "You start to hear the sound of the helicopter's engines struggling." + "\n" + "\n" +
 				"\"It's all your fault, we'll take over from here!\"" + "\n" + "\n" +
 				 "A brawl breaks out, followed by men screaming and crashing sound." + "\n" + "\n" +
-				"The audio log has ended, but you remain in deep thought after what you just heard.");
+				"The audio log has ended, but you remain in deep thought after what you just heard.", "");
 		locker = new Item("locker", "a sturdy locker inside the helicopter. Closed of course.", true, false);
 		locker.setSearchedReq(new Element[] {map, audioLog},"You try your darndest to pry open the locker, but to no avail",
 				"You use the key and the locker opens. Inside you find: ", key);
 				
+		
+		camp.addItem(glove);
 		platform.addItem(snowpile);
 		techInSnow.addItem(box);
 		helicopter.addItem(locker);

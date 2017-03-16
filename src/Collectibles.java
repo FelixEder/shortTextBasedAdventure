@@ -5,9 +5,19 @@
  *
  */
 public class Collectibles extends Element {
-
-	public Collectibles(String name, String description) {
+	//The text printed when the player sees an collectible in a room.
+	private String locationText;
+	
+	public Collectibles(String name, String description, String locationText) {
 		super.name = name;
 		super.description = description;
+		this.locationText = locationText;
+	}
+	
+	/**
+	 * @return the location text.
+	 */
+	public String getlocationText() {
+		return locationText;
 	}
 }
