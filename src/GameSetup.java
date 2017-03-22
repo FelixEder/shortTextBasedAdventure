@@ -18,7 +18,7 @@ public class GameSetup {
 		
 		platform = new Room("on a small platform sticking out from the mountain. There is a long way up" +
 				" and even longer way down. Up is preferable.");
-		camp = new Room("in a small encampment. There is a camp fire, small tent and a bunch of junk.");
+		camp = new Room("in a small encampment. There is a camp fire and a bunch of junk.");
 		techInSnow = new Room("on snow-covered plain. You admire the distant mountains.");
 	
 		helicopter = new Room("next to a wreckage of a helicopter. The rotor blade has been completely smashed.");
@@ -29,8 +29,8 @@ public class GameSetup {
 		
 		player.setCurrentRoom(platform);
 		
-		Item icepicks, snowpile, box, locker, key, map;
-		Collectibles picture, audioLog, glove, sdIcepicks;
+		Item icepicks, snowpile, box, locker, key, map, tent;
+		Collectibles picture, audioLog, glove;
 		
 		icepicks = new Item("icepicks", "A pair of ice picks, makes for a good grip on ice.", false, true);
 		snowpile = new Item("snowpile", "a medium sized snowpile, the one you made when you fell down here.", true, false);	
@@ -40,7 +40,10 @@ public class GameSetup {
 		glove = new Collectibles("glove", "some kind of glove lying by the tent.", "You pick up the glove. It is completely different from the ones you are wearing right now. " + "\n" +
 		"They can't be yours, but to whom do they belong?. You decide to throw them back into the tent.");
 		
+		tent = new Item("tent", "a bright blue tent of average size.", true, false);
 		
+		tent.setSearchedReq(null,"", "You poke your head into the tent and find it empty but recently used." + "\n" +
+				"It is still quite warm, it seems like somebody were here not long ago.", null);
 		
 		key = new Item("key", "A small key.", false, true);
 		picture = new Collectibles("picture", "", "A picture, on it you see three men with big smiles." + "\n"
@@ -69,6 +72,7 @@ public class GameSetup {
 				
 		
 		camp.addItem(glove);
+		camp.addItem(tent);
 		platform.addItem(snowpile);
 		techInSnow.addItem(box);
 		helicopter.addItem(locker);
