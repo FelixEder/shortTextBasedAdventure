@@ -85,15 +85,18 @@ public class PlayerActions {
             return;
         }
         else if(player.getCurrentRoom().isItemInRoom(inputCommand.getSecondWord())) {
-        	Item itemToPick = (Item) player.getCurrentRoom().getRoomItem(inputCommand.getSecondWord());
-        	if(itemToPick.isLiftable()) {
-                    player.setInventory(itemToPick);
-                    Main.printGameInfo("Picked up " + itemToPick.getName() + "." + "\n");
-                    return;
-                } 
-        	else {
-        		Main.printGameInfo(itemToPick.getName() + " can't be picked up!" + "\n");
-        		return;
+        	Element elemToPick = player.getCurrentRoom().getRoomItem(inputCommand.getSecondWord());
+        	if(elemToPick instanceof Item) {
+	        	if(((Item) elemToPick).isLiftable()) {
+	                    player.setInventory((Item) elemToPick);
+	                    Main.printGameInfo("Picked up " + elemToPick.getName() + "." + "\n");
+	                } 
+	        	else {
+	        		Main.printGameInfo(elemToPick.getName() + " can't be picked up!" + "\n");
+	        	}
+        	} else {
+        		Main.printGameInfo(((Collectibles) elemToPick).getpickUpTextText());
+        		player.getCurrentRoom().removeItemFromRoom(elemToPick.getName());
         	}
         }
         else {
@@ -118,15 +121,6 @@ public class PlayerActions {
             Main.printGameInfo("The mentioned item is not in your inventory!" + "\n");
         }
     }
-	
-	private void handleCorrectElement(Element elem) {
-		if(elem instanceof Item)
-			player.setInventory((Item) elem);
-		else {
-			Main.printGameInfo(((Collectibles) elem).getpickUpTextText());
-		}
-	}
-	
 	
     /**
      * Searches a given item
@@ -162,8 +156,13 @@ public class PlayerActions {
     	else {
     		Main.printGameInfo(itemToSearch.getContains().successSearch + "\n");
     		for(int i = 0; i < itemToSearch.getContains().storedItems.length; i++) {
-    			Main.printGameInfo(itemToSearch.getContains().storedItems[i].getDescription() + "\n");
-    			handleCorrectElement(itemToSearch.getContains().storedItems[i]);
+    			Element elem = itemToSearch.getContains().storedItems[i];
+    			Main.printGameInfo(elem.getDescription() + "\n");
+    			if(elem instanceof Item)
+    				player.setInventory((Item) elem);
+    			else {
+    				Main.printGameInfo(((Collectibles) elem).getpickUpTextText());
+    			}
     		}
     		player.getCurrentRoom().removeItemFromRoom(itemToSearch.getName());
     	}

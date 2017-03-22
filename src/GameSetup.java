@@ -37,8 +37,8 @@ public class GameSetup {
 		snowpile.setSearchedReq(new Element[] {icepicks}, "", "You stick your hands into the freezing snow and start searching, wondering why you would ever do such a  thing." + "\n"
 		+ "Finally, you find:", null);
 	
-		glove = new Collectibles("glove", " you pick up the glove. It is completely different from the ones you are wearing right now. " + "\n" +
-		"They can't be yours, but to whom do they belong?. You decide to throw them back into the tent.", "some kind of glove lying by the tent.");
+		glove = new Collectibles("glove", "some kind of glove lying by the tent.", "You pick up the glove. It is completely different from the ones you are wearing right now. " + "\n" +
+		"They can't be yours, but to whom do they belong?. You decide to throw them back into the tent.");
 		
 		
 		
@@ -60,7 +60,7 @@ public class GameSetup {
 				+ "You start to hear the sound of the helicopter's engines struggling." + "\n" + "\n" +
 				"\"It's all your fault, we'll take over from here!\"" + "\n" + "\n" +
 				 "A brawl breaks out, followed by men screaming and crashing sound." + "\n" + "\n" +
-				"The audio log has ended, but you remain in deep thought after what you just heard.");
+				"The audio log has ended, but you remain in deep thought after what you just heard." + "\nw");
 		
 		locker = new Item("locker", "a sturdy locker inside the helicopter. Closed of course.", true, false);
 		
