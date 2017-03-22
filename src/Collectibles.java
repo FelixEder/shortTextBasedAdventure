@@ -6,18 +6,18 @@
  */
 public class Collectibles extends Element {
 	//The text printed when the player sees an collectible in a room.
-	private String locationText;
+	private String pickUpText;
 	
-	public Collectibles(String name, String description, String locationText) {
+	public Collectibles(String name, String description, String pickUpText) {
 		super.name = name;
 		super.description = description;
-		this.locationText = locationText;
+		this.pickUpText = pickUpText;
 	}
 	
 	/**
-	 * @return the location text.
+	 * @return the pickUpText text.
 	 */
-	public String getlocationText() {
-		return locationText;
+	public String getpickUpTextText() {
+		return pickUpText;
 	}
 }

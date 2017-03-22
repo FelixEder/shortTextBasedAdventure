@@ -119,6 +119,15 @@ public class PlayerActions {
         }
     }
 	
+	private void handleCorrectElement(Element elem) {
+		if(elem instanceof Item)
+			player.setInventory((Item) elem);
+		else {
+			Main.printGameInfo(((Collectibles) elem).getpickUpTextText());
+		}
+	}
+	
+	
     /**
      * Searches a given item
      * @param inputCommand The command typed by the player.
@@ -154,8 +163,7 @@ public class PlayerActions {
     		Main.printGameInfo(itemToSearch.getContains().successSearch + "\n");
     		for(int i = 0; i < itemToSearch.getContains().storedItems.length; i++) {
     			Main.printGameInfo(itemToSearch.getContains().storedItems[i].getDescription() + "\n");
-    			if(itemToSearch.getContains().storedItems[i] instanceof Item)
-    				player.setInventory((Item) itemToSearch.getContains().storedItems[i]);
+    			handleCorrectElement(itemToSearch.getContains().storedItems[i]);
     		}
     		player.getCurrentRoom().removeItemFromRoom(itemToSearch.getName());
     	}

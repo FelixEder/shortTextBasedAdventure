@@ -47,14 +47,6 @@ public class Item extends Element{
 	}
 	
 	/**
-	 * @return The description of the element.
-	 */
-	public String getDescription() {
-		return description;
-	}
-	
-	
-	/**
 	 * @return if the item is searchable.
 	 */
 	public boolean isSearchable() {
