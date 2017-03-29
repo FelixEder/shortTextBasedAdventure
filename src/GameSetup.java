@@ -42,7 +42,7 @@ public class GameSetup {
 		
 		tent = new Item("tent", "a bright blue tent of average size.", true, false);
 		
-		tent.setSearchedReq(null,"", "You poke your head into the tent and find it empty but recently used." + "\n" +
+		tent.setSearchedReq(new Element[]{},"", "You poke your head into the tent and find it empty but recently used." + "\n" +
 				"It is still quite warm, it seems like somebody were here not long ago.",  null);
 		
 		key = new Item("key", "A small key.", false, true);
