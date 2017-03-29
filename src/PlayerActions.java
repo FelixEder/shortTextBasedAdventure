@@ -149,8 +149,7 @@ public class PlayerActions {
     	}
 
     	else if(!player.hasItem(itemToSearch.getContains().itemNeeded) && !(itemToSearch.getContains().itemNeeded == null)) {
-    		Main.printGameInfo("You try searching it, but you can't get it open." + "\n" +
-    				"It seems like you need another item.");
+    		Main.printGameInfo(itemToSearch.getContains().failedSearch + "\n");
     	}
     
     	else {

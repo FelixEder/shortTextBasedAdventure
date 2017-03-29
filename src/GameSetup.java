@@ -37,13 +37,13 @@ public class GameSetup {
 		snowpile.setSearchedReq(new Element[] {icepicks}, "", "You stick your hands into the freezing snow and start searching, wondering why you would ever do such a  thing." + "\n"
 		+ "Finally, you find:", null);
 	
-		glove = new Collectibles("glove", "some kind of glove lying by the tent.", "You pick up the glove. It is completely different from the ones you are wearing right now. " + "\n" +
-		"They can't be yours, but to whom do they belong?. You decide to throw them back into the tent.");
+		glove = new Collectibles("glove", "Some kind of glove lying by the tent.", "You pick up the glove. It is completely different from the ones you are wearing right now. " + "\n" +
+		"They can't be yours, but to whom do they belong? You decide to throw them back into the tent.");
 		
 		tent = new Item("tent", "a bright blue tent of average size.", true, false);
 		
 		tent.setSearchedReq(null,"", "You poke your head into the tent and find it empty but recently used." + "\n" +
-				"It is still quite warm, it seems like somebody were here not long ago.", null);
+				"It is still quite warm, it seems like somebody were here not long ago.",  null);
 		
 		key = new Item("key", "A small key.", false, true);
 		picture = new Collectibles("picture", "", "A picture, on it you see three men with big smiles." + "\n"
@@ -63,7 +63,7 @@ public class GameSetup {
 				+ "You start to hear the sound of the helicopter's engines struggling." + "\n" + "\n" +
 				"\"It's all your fault, we'll take over from here!\"" + "\n" + "\n" +
 				 "A brawl breaks out, followed by men screaming and crashing sound." + "\n" + "\n" +
-				"The audio log has ended, but you remain in deep thought after what you just heard." + "\nw");
+				"The audio log has ended, but you remain in deep thought after what you just heard." + "\n");
 		
 		locker = new Item("locker", "a sturdy locker inside the helicopter. Closed of course.", true, false);
 		
