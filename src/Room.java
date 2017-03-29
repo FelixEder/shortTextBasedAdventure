@@ -92,7 +92,7 @@ public class Room {
     public String getCompleteDescription() {
     	StringBuilder sb = new StringBuilder("You are " + description + "\n");
     	if(!elementsInRoom.isEmpty()) {
-    		sb.append("You see " + getItemString());
+    		sb.append("You see:" + "\n" + getItemString());
     	}
     	sb.append("\n" + getExitString() + "\n");
         return sb.toString();
