@@ -1,3 +1,4 @@
+import javafx.application.Application;
 
 public class Game {
 	private Parser parser;

@@ -2,6 +2,11 @@ import java.util.ArrayList;
 import java.util.List;
 
 import javafx.application.Application;
+import javafx.application.Platform;
+import javafx.concurrent.Service;
+import javafx.concurrent.Task;
+import javafx.concurrent.WorkerStateEvent;
+import javafx.event.EventHandler;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Scene;
@@ -13,19 +18,20 @@ import javafx.stage.Stage;
 
 public class Main extends Application{
 	@FXML 
-	protected TextField input;
+	protected static TextField input;
 	
 	@FXML
-	protected TextArea output, inventory, commands;
+	protected static TextArea output, inventory, commands;
 	
 	
 	protected static List<String> history;
 	protected static int historyPointer;
 	protected static String textToRead = null;
 	
+	private Service<Void> backgroundThread;
+	
 	public static void main(String[] args) {
 		Application.launch(args);
-
 	}
 
 	@Override
@@ -44,6 +50,36 @@ public class Main extends Application{
 		stage.setScene(scene);
 		stage.setTitle("MyConsoleFXGUI"); //Could later be changed so that the actual game title is displayed here.
 		stage.show();
+		
+		//Starts a new Javafx thread and launches the game on it.
+		backgroundThread = new Service<Void>() {
+		
+			@Override
+			protected Task<Void> createTask() {
+				return new Task<Void>() {
+					
+					@Override
+					protected Void call() throws Exception {
+						Game game = new Game("English", "PlayerName");
+						game.play();
+						return null;
+					}
+				};
+			}
+		};
+		backgroundThread.restart();
+		//When the game is completed on the other thread, this is called.
+		backgroundThread.setOnSucceeded(new EventHandler<WorkerStateEvent>() {
+			
+			@Override
+			public void handle(WorkerStateEvent event) {
+				try {
+					Platform.exit();
+				} catch (Exception e) {
+					e.printStackTrace();
+				}
+			}
+		});
 		
 	}
 	
@@ -81,7 +117,7 @@ public class Main extends Application{
 	 * Called when the game wants to print something to the game
 	 * @param message The text to be printed to the console.
 	 */
-	public void printGameInfo(String message) {
+	public static void printGameInfo(String message) {
 		output.appendText(message + System.lineSeparator());
 	}
 	
@@ -114,6 +150,5 @@ public class Main extends Application{
 		String returnText = textToRead;
 		textToRead = null;
 		return returnText;
-}
-
+	}
 }
