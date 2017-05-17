@@ -23,7 +23,6 @@ public class Main extends Application{
 	@FXML
 	protected static TextArea output, inventory, commands;
 	
-	
 	protected static List<String> history;
 	protected static int historyPointer;
 	protected static String textToRead = null;
@@ -38,10 +37,13 @@ public class Main extends Application{
 	public void start(Stage stage) throws Exception {
 		BorderPane root = FXMLLoader.load(getClass().getResource("Console.fxml"));
 		
+		
+		/*
 		output = new TextArea();
 		input = new TextField();
 		inventory = new TextArea();
 		commands = new TextArea();
+		*/
 		
 		history = new ArrayList<>();
 		historyPointer = 0;
@@ -118,7 +120,8 @@ public class Main extends Application{
 	 * @param message The text to be printed to the console.
 	 */
 	public static void printGameInfo(String message) {
-		output.appendText(message + System.lineSeparator());
+		System.out.println("This method was attempted!");
+		output.setText(message + System.lineSeparator());
 	}
 	
 	
