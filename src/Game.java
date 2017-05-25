@@ -32,7 +32,7 @@ public class Game {
 			InputCommand inputCommand = parser.getCommand();
 			done = processCommand(inputCommand);
 		}
-		Main.printGameInfo("Thanks for enjoying my little game, have a nice day." + "\n");
+		Application.printGameInfo("Thanks for enjoying my little game, have a nice day." + "\n");
 	}
 	
 	/**

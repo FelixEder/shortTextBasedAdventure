@@ -17,7 +17,7 @@ import javafx.scene.layout.BorderPane;
 import javafx.stage.Stage;
 
 public class Main extends Application{
-	
+		
 	@FXML 
 	protected TextField input;
 	
@@ -29,7 +29,7 @@ public class Main extends Application{
 	protected static String textToRead = null;
 	
 	private Service<Void> backgroundThread;
-	
+		
 	public static void main(String[] args) {
 		Application.launch(args);
 	}
@@ -40,13 +40,6 @@ public class Main extends Application{
 		loader.setLocation(Main.class.getResource("Console.fxml"));
 		
 		BorderPane root = (BorderPane) loader.load();
-				
-		/*
-		output = new TextArea();
-		input = new TextField();
-		inventory = new TextArea();
-		commands = new TextArea();
-		*/
 		
 		history = new ArrayList<>();
 		historyPointer = 0;
@@ -119,21 +112,15 @@ public class Main extends Application{
 		}
 	}
 	
-	@FXML
-	public void initialize() {
-		output.setText("Testing");
-	}
-	
-	
 	/**
 	 * Called when the game wants to print something to the game
 	 * @param message The text to be printed to the console.
-	 
-	public static void printGameInfo(String message) {
+	 */
+	public void printGameInfo(String message) {
 		System.out.println("This method was attempted!");
 		output.setText(message + System.lineSeparator());
 	}
-	*/
+	
 	
 	/**
 	 * Sets the input field to a particular value.
