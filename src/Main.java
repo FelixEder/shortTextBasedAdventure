@@ -17,11 +17,12 @@ import javafx.scene.layout.BorderPane;
 import javafx.stage.Stage;
 
 public class Main extends Application{
+	
 	@FXML 
-	protected static TextField input;
+	protected TextField input;
 	
 	@FXML
-	protected static TextArea output, inventory, commands;
+	protected TextArea output, inventory, commands;
 	
 	protected static List<String> history;
 	protected static int historyPointer;
@@ -35,9 +36,11 @@ public class Main extends Application{
 
 	@Override
 	public void start(Stage stage) throws Exception {
-		BorderPane root = FXMLLoader.load(getClass().getResource("Console.fxml"));
+		FXMLLoader loader = new FXMLLoader();
+		loader.setLocation(Main.class.getResource("Console.fxml"));
 		
-		
+		BorderPane root = (BorderPane) loader.load();
+				
 		/*
 		output = new TextArea();
 		input = new TextField();
@@ -54,6 +57,7 @@ public class Main extends Application{
 		stage.show();
 		
 		//Starts a new Javafx thread and launches the game on it.
+		System.out.println("Stage has been set up");
 		backgroundThread = new Service<Void>() {
 		
 			@Override
@@ -63,6 +67,7 @@ public class Main extends Application{
 					@Override
 					protected Void call() throws Exception {
 						Game game = new Game("English", "PlayerName");
+						System.out.println("Game has been init, time to play!");
 						game.play();
 						return null;
 					}
@@ -114,16 +119,21 @@ public class Main extends Application{
 		}
 	}
 	
-
+	@FXML
+	public void initialize() {
+		output.setText("Testing");
+	}
+	
+	
 	/**
 	 * Called when the game wants to print something to the game
 	 * @param message The text to be printed to the console.
-	 */
+	 
 	public static void printGameInfo(String message) {
 		System.out.println("This method was attempted!");
 		output.setText(message + System.lineSeparator());
 	}
-	
+	*/
 	
 	/**
 	 * Sets the input field to a particular value.
