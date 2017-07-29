@@ -4,17 +4,14 @@
  *
  */
 public class PlayerActions {
-    Player player;
-	Game game;
+    private Player player;
 	
 	/**
 	 * Constructor of the class, sets it up.
 	 * @param player The player of the game
-	 * @param game The game of the player.
 	 */
-	public PlayerActions(Player player, Game game) {
+	public PlayerActions(Player player) {
 		this.player = player;
-		this.game = game;
 	}
 	
 	/**

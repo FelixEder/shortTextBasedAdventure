@@ -11,8 +11,7 @@ public class Parser {
 	 /**
      * Create a parser to read from the terminal window.
      */
-    public Parser() 
-    {
+    public Parser() {
         commands = new CommandDictionary();
     }
 	

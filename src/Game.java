@@ -1,3 +1,4 @@
+import javafx.stage.Stage;
 
 public class Game {
 	private Parser parser;
@@ -15,12 +16,11 @@ public class Game {
 		parser = new Parser();
 		player = new Player(playerName);
 		this.language = language;
-		playerActions = new PlayerActions(player, this);
+		playerActions = new PlayerActions(player);
 		gameSetup = new GameSetup(player);
 		gameSetup.setUpGame();
 	}
 
-	
 	/**
 	 * Starts the infinite loop that is used when the game is running
 	 */
@@ -32,7 +32,7 @@ public class Game {
 			InputCommand inputCommand = parser.getCommand();
 			done = processCommand(inputCommand);
 		}
-		Application.printGameInfo("Thanks for enjoying my little game, have a nice day." + "\n");
+		Main.printGameInfo("Thanks for enjoying my little game, have a nice day." + "\n");
 	}
 	
 	/**

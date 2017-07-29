@@ -49,7 +49,7 @@ public class Player {
 	
 	/**
 	 * Returns an item from the inventory
-	 * @param item The item to be returned
+	 * @param itemName The name of the item to be returned
 	 * @return The item to be returned
 	 */
 	public Item getInventory(String itemName) {
@@ -111,7 +111,6 @@ public class Player {
 	
 	/**
 	 * Adds a new room to the room history
-	 * @param room The latest room the player visited
 	 */
 	public void setRoomHistory() {
 		roomHistory.push(currentRoom);

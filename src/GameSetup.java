@@ -1,6 +1,6 @@
 
 public class GameSetup {
-	Player player;
+	private Player player;
 	
 	/**
 	 * The 
