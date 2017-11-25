@@ -121,7 +121,7 @@ public class Main extends Application{
 	 * Called when the game wants to print something to the game
 	 * @param message The text to be printed to the console.
 	 */
-	public void printGameInfo(String message) {
+	public static void printGameInfo(String message) {
 		System.out.println("This method was attempted!");
         if(output == null)
             System.out.println("Output was null!");
@@ -137,18 +137,14 @@ public class Main extends Application{
 	 * Sets the input field to a particular value.
 	 * @param message The text that should be added to the input field.
 	 */
-	/*
-	public void addInputInfo(String message) {
+	public static void addInputInfo(String message) {
 		input.setText(message);
 	}
-	
-	*/
-	
+
 	/**
 	 * Waits until the field textToRead is non-null and
 	 * returns it, setting the field to null afterwards.
 	 * @return The current text value in the String field.
-	 * @throws InterruptedException 
 	 */
 	public static String getTextField() {
 		while(textToRead == null) {
