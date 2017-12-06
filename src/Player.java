@@ -13,15 +13,17 @@ public class Player {
 	private HashMap<String, Item> inventory;
 	private Room currentRoom;
 	private Stack<Room> roomHistory;
+	private Controller controller;
 	
 	/**
 	 * Constructor for the Player, sets the name for the user.
 	 * @param name The name of the player, used for leader boards.
 	 */
-	public Player(String name) {
+	public Player(String name, Controller controller) {
 		this.name = name;
 		inventory = new HashMap<String, Item>();
 		roomHistory = new Stack<Room>();
+		this.controller = controller;
 	}
 	
 	/**
@@ -70,9 +72,9 @@ public class Player {
      * @param invItem The item the player want to remove from inventory.
      */
     public void removeInventory(String invItem) {
-        Element itemToDrop = inventory.remove(invItem);
-        currentRoom.addItem(itemToDrop);
-        Main.printGameInfo("You dropped " + itemToDrop.getName() + "." + "\n");
+      Element itemToDrop = inventory.remove(invItem);
+      currentRoom.addItem(itemToDrop);
+      controller.printGameInfo("You dropped " + itemToDrop.getName() + "." + "\n");
     }
     
     /**
@@ -80,11 +82,11 @@ public class Player {
      * @return A string with all items in inventory separated by space.
      */
     public String getInventoryString() {
-        String returnString = "Inventory:";
-        for(String key : inventory.keySet()) {
-            returnString += "  " + key;
-        }
-        return returnString;
+      String returnString = "Inventory:";
+      for(String key : inventory.keySet()) {
+          returnString += "  " + key;
+      }
+      return returnString;
     }
     
 	/**
@@ -120,7 +122,7 @@ public class Player {
 	 * Checks whether the stack of rooms is empty.
 	 * @return The boolean value true if stack is empty, returns false if it is not.
  	 */
-    public boolean checkIfEmpty() {
-        return roomHistory.empty();
-    }
+  public boolean checkIfEmpty() {
+      return roomHistory.empty();
+  }
 }

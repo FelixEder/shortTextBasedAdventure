@@ -39,32 +39,24 @@ public class Main extends Application{
 		FXMLLoader loader = new FXMLLoader();
 		loader.setLocation(Main.class.getResource("Console.fxml"));
 
-        output = new TextArea();
-        input = new TextField();
-        inventory = new TextArea();
-        commands = new TextArea();
-
 		BorderPane root = loader.load();
-
-		history = new ArrayList<>();
-		historyPointer = 0;
 
 		Scene scene = new Scene(root);
 		stage.setScene(scene);
 		stage.setTitle("MyConsoleFXGUI"); //Could later be changed so that the actual game title is displayed here.
 		stage.show();
-		
+
 		//Starts a new Javafx thread and launches the game on it.
 		System.out.println("Stage has been set up");
 		backgroundThread = new Service<Void>() {
-		
+
 			@Override
 			protected Task<Void> createTask() {
 				return new Task<Void>() {
-					
+
 					@Override
 					protected Void call() throws Exception {
-						Game game = new Game("English", "PlayerName");
+						Game game = new Game("English", "PlayerName", loader.getController());
 						System.out.println("Game has been init, time to play!");
 						game.play();
 						return null;
@@ -75,7 +67,7 @@ public class Main extends Application{
 		backgroundThread.restart();
 		//When the game is completed on the other thread, this is called.
 		backgroundThread.setOnSucceeded(new EventHandler<WorkerStateEvent>() {
-			
+
 			@Override
 			public void handle(WorkerStateEvent event) {
 				try {
@@ -85,77 +77,5 @@ public class Main extends Application{
 				}
 			}
 		});
-		
-	}
-
-	@FXML
-	void inputAction(KeyEvent keyEvent) {
-		switch (keyEvent.getCode()) {
-		case ENTER: String text = input.getText();
-					output.appendText(text + System.lineSeparator());
-					history.add(text);
-					historyPointer = history.size();
-					input.clear();
-					textToRead = text;
-					break;
-
-		case UP :	if(historyPointer == 0) break;
-					historyPointer--;
-					input.setText(history.get(historyPointer));
-					input.selectAll();
-					input.selectEnd(); //Does not change anything seemingly
-					break;
-
-		case DOWN:	if(historyPointer == history.size()-1) break;
-					historyPointer++;
-					input.setText(history.get(historyPointer));
-					input.selectAll();
-					input.selectEnd(); //Does not change anything seemingly
-					break;
-
-		default: break;
-		}
-	}
-	
-	/**
-	 * Called when the game wants to print something to the game
-	 * @param message The text to be printed to the console.
-	 */
-	public static void printGameInfo(String message) {
-		System.out.println("This method was attempted!");
-        if(output == null)
-            System.out.println("Output was null!");
-        try {
-            output.setText(message + System.lineSeparator());
-        } catch (Exception e) {
-            System.out.println(e.getMessage());
-        }
-	}
-	
-	
-	/**
-	 * Sets the input field to a particular value.
-	 * @param message The text that should be added to the input field.
-	 */
-	public static void addInputInfo(String message) {
-		input.setText(message);
-	}
-
-	/**
-	 * Waits until the field textToRead is non-null and
-	 * returns it, setting the field to null afterwards.
-	 * @return The current text value in the String field.
-	 */
-	public static String getTextField() {
-		while(textToRead == null) {
-			try {
-				Thread.sleep(500);
-			} catch (InterruptedException e) {
-				Thread.currentThread().interrupt();
-			}
-		}
-		String returnText = textToRead;
-		textToRead = null;
-		return returnText;
 	}
 }

@@ -7,20 +7,21 @@ import java.util.HashMap;
  * @author  (Felix Eder)
  */
 
-public class CommandDictionary
-{
+public class CommandDictionary {
     // A mapping between a command word and the CommandWord
     // associated with it.
     private HashMap<String, EnumCommands> validCommands;
+    private Controller controller;
 
     /**
      * Constructor - initialize the command words.
      */
-    public CommandDictionary() {
+    public CommandDictionary(Controller controller) {
         validCommands = new HashMap<String, EnumCommands>();
         for(EnumCommands command : EnumCommands.values()) {
             validCommands.put(command.toString(), command);
         }
+        this.controller = controller;
     }
 
     /**
@@ -51,7 +52,7 @@ public class CommandDictionary
         for(String command : validCommands.keySet()) {
         	itemString += command + "   ";
         }
-        	Main.printGameInfo(itemString);
+        	controller.printGameInfo(itemString);
     }
     
     /**

@@ -7,30 +7,31 @@ import java.util.Scanner;
  */
 public class Parser {
 	private CommandDictionary commands;
+	private Controller controller;
 	
 	 /**
      * Create a parser to read from the terminal window.
      */
-    public Parser() {
-        commands = new CommandDictionary();
+    public Parser(Controller controller) {
+      commands = new CommandDictionary(controller);
+      this.controller = controller;
     }
 	
     /**
      * @return The next command from the user.
      */
-    public InputCommand getCommand() 
-    {
-        String inputLine;   // will hold the full input line
-        String word1 = null;
-        String word2 = null;
+    public InputCommand getCommand() {
+      String inputLine;   // will hold the full input line
+      String word1 = null;
+      String word2 = null;
 
-        //System.out.print("> ");     // print prompt
+      //System.out.print("> ");     // print prompt
 
-        inputLine = Main.getTextField();
+      inputLine = controller.getTextField();
 
-        // Find up to two words on the line.
-        @SuppressWarnings("resource")
-		Scanner tokenizer = new Scanner(inputLine);
+      // Find up to two words on the line.
+      @SuppressWarnings("resource")
+		  Scanner tokenizer = new Scanner(inputLine);
         if(tokenizer.hasNext()) {
             word1 = tokenizer.next();      // get first word
             if(tokenizer.hasNext()) {
