@@ -46,10 +46,7 @@ public class Parser {
     /**
      * Print out a list of valid command words.
      */
-    public void showCommands()
-    {
-        commands.showAll();
-    }
+    public void showCommands() {commands.showAll();}
     
     /**
      * @return the string command associated with the HELP-commands.

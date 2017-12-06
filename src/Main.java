@@ -43,7 +43,7 @@ public class Main extends Application{
 
 		Scene scene = new Scene(root);
 		stage.setScene(scene);
-		stage.setTitle("MyConsoleFXGUI"); //Could later be changed so that the actual game title is displayed here.
+		stage.setTitle("shortTextBasedAdventure"); //Could later be changed so that the actual game title is displayed here.
 		stage.show();
 
 		//Starts a new Javafx thread and launches the game on it.

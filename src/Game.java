@@ -62,7 +62,7 @@ public class Game {
       controller.printGameInfo("around the Andes.");
       controller.printGameInfo("");
       controller.printGameInfo("Your command words are:");
-        parser.showCommands();
+      parser.showCommands();
       controller.printGameInfo("");
       controller.printGameInfo("");
     }

@@ -63,8 +63,7 @@ public class Controller implements Initializable {
    * @param message The text to be printed to the console.
    */
   public void printGameInfo(String message) {
-    System.out.println("This method was attempted!");
-    output.setText(message + System.lineSeparator());
+    output.appendText(message + System.lineSeparator());
   }
 
   /**
@@ -75,15 +74,21 @@ public class Controller implements Initializable {
     input.setText(message);
   }
 
-
   /**
    * Waits until the field textToRead is non-null and
    * returns it, setting the field to null afterwards.
    * @return The current text value in the String field.
    */
   public String getTextField() {
-  String returnText = textToRead;
-  textToRead = null;
-  return returnText;
+    while(textToRead == null) {
+      try {
+        Thread.sleep(500);
+      } catch (InterruptedException e) {
+        Thread.currentThread().interrupt();
+      }
+    }
+    String returnText = textToRead;
+    textToRead = null;
+    return returnText;
   }
 }
