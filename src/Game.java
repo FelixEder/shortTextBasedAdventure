@@ -1,3 +1,4 @@
+import javafx.stage.Stage;
 
 public class Game {
 	private Parser parser;
@@ -5,22 +6,23 @@ public class Game {
 	private String language;
 	private PlayerActions playerActions;
 	private GameSetup gameSetup;
+	private Controller controller;
 	
 	/**
 	 * Constructor for game
 	 * @param language The language to be played
 	 * @param playerName The name of the game.
 	 */
-	public Game(String language, String playerName) {
-		parser = new Parser();
-		player = new Player(playerName);
+	public Game(String language, String playerName, Controller controller) {
+		parser = new Parser(controller);
+		player = new Player(playerName, controller);
 		this.language = language;
-		playerActions = new PlayerActions(player, this);
+		this.controller = controller;
+		playerActions = new PlayerActions(player, controller);
 		gameSetup = new GameSetup(player);
 		gameSetup.setUpGame();
 	}
 
-	
 	/**
 	 * Starts the infinite loop that is used when the game is running
 	 */
@@ -32,21 +34,21 @@ public class Game {
 			InputCommand inputCommand = parser.getCommand();
 			done = processCommand(inputCommand);
 		}
-		Main.printGameInfo("Thanks for enjoying my little game, have a nice day." + "\n");
+    controller.printGameInfo("Thanks for enjoying my little game, have a nice day." + "\n");
 	}
 	
 	/**
 	 * The text that is printed out in beginning of the game.
 	 */
 	private void printStartMessage() {
-		Main.printGameInfo("");
-		Main.printGameInfo("Welcome to my game!");
-        Main.printGameInfo("");
-		Main.printGameInfo("You are on an expedition in the Andes of South America.");
-		Main.printGameInfo("However, you are currently falling down a cliff.");
-		Main.printGameInfo("Suddenly, you land on a small platform");
-        Main.printGameInfo("Type '" + parser.getSpecificKey() + "' if you need help.");
-		Main.printGameInfo("");
+		controller.printGameInfo("");
+		controller.printGameInfo("Welcome to my game!");
+		controller.printGameInfo("");
+		controller.printGameInfo("You are on an expedition in the Andes of South America.");
+		controller.printGameInfo("However, you are currently falling down a cliff.");
+		controller.printGameInfo("Suddenly, you land on a small platform");
+		controller.printGameInfo("Type '" + parser.getSpecificKey() + "' if you need help.");
+		controller.printGameInfo("");
 		playerActions.printLocationInfo();
 	}
 	
@@ -55,15 +57,14 @@ public class Game {
      * Here we print some stupid, cryptic message and a list of the 
      * command words.
      */
-    private void printHelp() 
-    {
-        Main.printGameInfo("You are lost. You are alone. You wander");
-        Main.printGameInfo("around the Andes.");
-        Main.printGameInfo("");
-        Main.printGameInfo("Your command words are:");
-        parser.showCommands();
-        Main.printGameInfo("");
-        Main.printGameInfo("");
+    private void printHelp() {
+      controller.printGameInfo("You are lost. You are alone. You wander");
+      controller.printGameInfo("around the Andes.");
+      controller.printGameInfo("");
+      controller.printGameInfo("Your command words are:");
+      parser.showCommands();
+      controller.printGameInfo("");
+      controller.printGameInfo("");
     }
 	
 	/**
@@ -110,11 +111,11 @@ public class Game {
 			break;
 	          
 		case ITEMS:
-			Main.printGameInfo(player.getInventoryString() + "\n");
+      controller.printGameInfo(player.getInventoryString() + "\n");
 			break;
 			
-		default:   
-			Main.printGameInfo("I don't know what you mean..." + "\n");
+		default:
+      controller.printGameInfo("I don't know what you mean..." + "\n");
             break;
 		}
 		return wantToQuit;
@@ -128,7 +129,7 @@ public class Game {
     private boolean quit(InputCommand inputCommand) 
     {
         if(inputCommand.hasSecondWord()) {
-            Main.printGameInfo("Quit what?" + "\n");
+          controller.printGameInfo("Quit what?" + "\n");
             return false;
         }
         else {

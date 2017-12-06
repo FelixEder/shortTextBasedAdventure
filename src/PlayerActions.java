@@ -4,24 +4,23 @@
  *
  */
 public class PlayerActions {
-    Player player;
-	Game game;
+    private Player player;
+    private Controller controller;
 	
 	/**
 	 * Constructor of the class, sets it up.
 	 * @param player The player of the game
-	 * @param game The game of the player.
 	 */
-	public PlayerActions(Player player, Game game) {
+	public PlayerActions(Player player, Controller controller) {
+		this.controller = controller;
 		this.player = player;
-		this.game = game;
 	}
 	
 	/**
 	 * Prints the complete information regarding a room and it's content
 	 */
 	public void printLocationInfo() {
-		Main.printGameInfo(player.getCurrentRoom().getCompleteDescription());
+    controller.printGameInfo(player.getCurrentRoom().getCompleteDescription());
 	}
 	
     /** 
@@ -33,22 +32,22 @@ public class PlayerActions {
 	public void goRoom(InputCommand inputCommand) {
 		if(!inputCommand.hasSecondWord()) {
             // if there is no second word, we don't know where to go...
-            Main.printGameInfo("Go where?" + "\n");
+      controller.printGameInfo("Go where?" + "\n");
             return;
         }
 		String direction = inputCommand.getSecondWord();
 		Room.ExitReq nextRoom = player.getCurrentRoom().getExit(direction);
 		 if (nextRoom == null) {
-	            Main.printGameInfo("There is no exit in that direction!" + "\n");
+       controller.printGameInfo("There is no exit in that direction!" + "\n");
 		 }
 		 else if(nextRoom.itemNeeded == null || player.getInventory(nextRoom.itemNeeded.getName()) != null){
 			 player.setRoomHistory();
 			 player.setCurrentRoom(nextRoom.exitRoom);
-			 Main.printGameInfo(nextRoom.successExit + "\n");
+       controller.printGameInfo(nextRoom.successExit + "\n");
 			 printLocationInfo();
 		 }
 		 else {
-			 Main.printGameInfo(nextRoom.failedExit + "\n");
+       controller.printGameInfo(nextRoom.failedExit + "\n");
 		 }
 	}
 	
@@ -59,10 +58,10 @@ public class PlayerActions {
 	public void back(InputCommand inputCommand) {
         if(inputCommand.hasSecondWord()) {
             if(inputCommand.getSecondWord().equals("back")) {
-                Main.printGameInfo("Back back where?" + "\n");
+              controller.printGameInfo("Back back where?" + "\n");
             }
             else {
-                Main.printGameInfo("Back where?" + "\n");
+              controller.printGameInfo("Back where?" + "\n");
             }
        } 
         else if(!player.checkIfEmpty()) {
@@ -70,7 +69,7 @@ public class PlayerActions {
            printLocationInfo();
         }
         else {
-            Main.printGameInfo("From here on, you can't go back further." + "\n" );
+          controller.printGameInfo("From here on, you can't go back further." + "\n" );
         }
     }
 	
@@ -81,7 +80,7 @@ public class PlayerActions {
      */
 	public void pickUpItem(InputCommand inputCommand) {
         if(!inputCommand.hasSecondWord()) {
-            Main.printGameInfo("Take what?" + "\n");
+          controller.printGameInfo("Take what?" + "\n");
             return;
         }
         else if(player.getCurrentRoom().isItemInRoom(inputCommand.getSecondWord())) {
@@ -89,18 +88,18 @@ public class PlayerActions {
         	if(elemToPick instanceof Item) {
 	        	if(((Item) elemToPick).isLiftable()) {
 	                    player.setInventory((Item) elemToPick);
-	                    Main.printGameInfo("Picked up " + elemToPick.getName() + "." + "\n");
+              controller.printGameInfo("Picked up " + elemToPick.getName() + "." + "\n");
 	                } 
 	        	else {
-	        		Main.printGameInfo(elemToPick.getName() + " can't be picked up!" + "\n");
+              controller.printGameInfo(elemToPick.getName() + " can't be picked up!" + "\n");
 	        	}
         	} else {
-        		Main.printGameInfo(((Collectibles) elemToPick).getpickUpTextText());
+            controller.printGameInfo(((Collectibles) elemToPick).getpickUpTextText());
         		player.getCurrentRoom().removeItemFromRoom(elemToPick.getName());
         	}
         }
         else {
-            Main.printGameInfo("The mentioned item is not located in the room!" + "\n");
+          controller.printGameInfo("The mentioned item is not located in the room!" + "\n");
         }
     }
     
@@ -110,7 +109,7 @@ public class PlayerActions {
      */
 	public void dropItems(InputCommand inputCommand) {
         if(!inputCommand.hasSecondWord()) {
-            Main.printGameInfo("Drop what?" + "\n");
+          controller.printGameInfo("Drop what?" + "\n");
             return;
         }
         Item itemToDrop = player.getInventory(inputCommand.getSecondWord());
@@ -118,7 +117,7 @@ public class PlayerActions {
             player.removeInventory(itemToDrop.getName());
        }
         else {
-            Main.printGameInfo("The mentioned item is not in your inventory!" + "\n");
+          controller.printGameInfo("The mentioned item is not in your inventory!" + "\n");
         }
     }
 	
@@ -128,39 +127,39 @@ public class PlayerActions {
      */
     public void search(InputCommand inputCommand) {
     	if(!inputCommand.hasSecondWord()) {
-    		Main.printGameInfo("Search what?" + "\n");
+        controller.printGameInfo("Search what?" + "\n");
     		return;
     	}
     	String item = inputCommand.getSecondWord();
     	Element elementToSearch = player.getCurrentRoom().getRoomItem(item);
     	Item itemToSearch;
     	if(elementToSearch instanceof Collectibles) {
-    		Main.printGameInfo(elementToSearch.getName() + " can't be searched!" + "\n");
+        controller.printGameInfo(elementToSearch.getName() + " can't be searched!" + "\n");
     		return;
     	}
     	itemToSearch = (Item) elementToSearch;
     	if(itemToSearch == null) {
-    		Main.printGameInfo("There is no such item in this area!" + "\n");
+        controller.printGameInfo("There is no such item in this area!" + "\n");
     		return;
     	}
     	else if(!itemToSearch.isSearchable()){
-    		Main.printGameInfo(itemToSearch.getName() + " can't be searched!" + "\n");
+        controller.printGameInfo(itemToSearch.getName() + " can't be searched!" + "\n");
     		return;
     	}
 
     	else if(!player.hasItem(itemToSearch.getContains().itemNeeded) && !(itemToSearch.getContains().itemNeeded == null)) {
-    		Main.printGameInfo(itemToSearch.getContains().failedSearch + "\n");
+        controller.printGameInfo(itemToSearch.getContains().failedSearch + "\n");
     	}
     
     	else {
-    		Main.printGameInfo(itemToSearch.getContains().successSearch + "\n");
+        controller.printGameInfo(itemToSearch.getContains().successSearch + "\n");
     		for(int i = 0; i < itemToSearch.getContains().storedItems.length; i++) {
     			Element elem = itemToSearch.getContains().storedItems[i];
-    			Main.printGameInfo(elem.getDescription() + "\n");
+          controller.printGameInfo(elem.getDescription() + "\n");
     			if(elem instanceof Item)
     				player.setInventory((Item) elem);
     			else {
-    				Main.printGameInfo(((Collectibles) elem).getpickUpTextText());
+            controller.printGameInfo(((Collectibles) elem).getpickUpTextText());
     			}
     		}
     		player.getCurrentRoom().removeItemFromRoom(itemToSearch.getName());
