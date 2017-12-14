@@ -1,15 +1,15 @@
 import java.util.HashMap;
+import java.util.Set;
 import java.util.Stack;
 
 /**
  * The Player class stores information regarding the player.
  * The player is created when the user starts the game.
- * @author felix
+ * @author Felix Eder
  *
  */
 public class Player {
 	private String name;
-	//This could also be an arrayList, they wouldn't function any differently.
 	private HashMap<String, Item> inventory;
 	private Room currentRoom;
 	private Stack<Room> roomHistory;
@@ -21,8 +21,8 @@ public class Player {
 	 */
 	public Player(String name, Controller controller) {
 		this.name = name;
-		inventory = new HashMap<String, Item>();
-		roomHistory = new Stack<Room>();
+		inventory = new HashMap<>();
+		roomHistory = new Stack<>();
 		this.controller = controller;
 	}
 	
@@ -32,21 +32,19 @@ public class Player {
 	public String getName() {
 		return name;
 	}
-	
-	//This method could be unnecessary.
-	/**
-	 * @return The inventory of the player
-	 */
-	public HashMap<String, Item> getInventory() {
-		return inventory;
-	}
+
+  /**
+   * @return the names of all the items in the inventory in a set
+   */
+  public Set<String> getInventoryNames() {return inventory.keySet();}
 	
 	/**
 	 * Adds an item to the inventory
 	 * @param item The item to be added
 	 */
-	public void setInventory(Item item) {
+	public void addItemToInventory(Item item) {
 		inventory.put(item.getName(), item);
+    controller.updateInventoryText(inventory.keySet());
 	}
 	
 	/**
@@ -61,33 +59,22 @@ public class Player {
 	/**
 	 * Checks if a given item exists in the player's inventory.
 	 * @param item the name of the item to be checked.
-	 * @return
+	 * @return True if the inventory contains the specific item and vice versa.
 	 */
 	public boolean hasItem(Item item) {
 		return inventory.containsValue(item);
 	}
 	   
-    /**
-     * Removes an item from inventory and prints out information.
-     * @param invItem The item the player want to remove from inventory.
-     */
-    public void removeInventory(String invItem) {
-      Element itemToDrop = inventory.remove(invItem);
-      currentRoom.addItem(itemToDrop);
-      controller.printGameInfo("You dropped " + itemToDrop.getName() + "." + "\n");
-    }
-    
-    /**
-     * Returns a String with all items currently in inventory.
-     * @return A string with all items in inventory separated by space.
-     */
-    public String getInventoryString() {
-      String returnString = "Inventory:";
-      for(String key : inventory.keySet()) {
-          returnString += "  " + key;
-      }
-      return returnString;
-    }
+  /**
+   * Removes an item from inventory and prints out information.
+   * @param invItem The item the player want to remove from inventory.
+   */
+  public void removeItemFromInventory(String invItem) {
+    Element itemToDrop = inventory.remove(invItem);
+    currentRoom.addItem(itemToDrop);
+    controller.printGameInfo("You dropped " + itemToDrop.getName() + "." + "\n");
+    controller.updateInventoryText(inventory.keySet());
+  }
     
 	/**
 	 * @return The current room of the player

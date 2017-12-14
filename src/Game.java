@@ -122,8 +122,7 @@ public class Game {
      * whether we really quit the game.
      * @return true, if this command quits the game, false otherwise.
      */
-    private boolean quit(InputCommand inputCommand) 
-    {
+    private boolean quit(InputCommand inputCommand) {
         if(inputCommand.hasSecondWord()) {
           controller.printGameInfo("Quit what?" + "\n");
             return false;

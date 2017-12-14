@@ -8,6 +8,7 @@ import java.net.URL;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.ResourceBundle;
+import java.util.Set;
 
 /**
  * The controller for the Console
@@ -29,6 +30,7 @@ public class Controller implements Initializable {
   public void initialize(URL url, ResourceBundle resourceBundle) {
     history = new ArrayList<>();
     historyPointer = 0;
+    inventory.setText("Inventory:");
   }
 
   @FXML
@@ -92,11 +94,16 @@ public class Controller implements Initializable {
     return returnText;
   }
 
-  public void updateInventoryText() {
+  public void updateInventoryText(Set<String> items) {
+    StringBuilder sb = new StringBuilder("Inventory: \n");
 
+    for(String item : items) {
+      sb.append(item + "\n");
+    }
+    inventory.setText(sb.toString());
   }
 
   public void updateCommandsText() {
-
+    //TODO Implement
   }
 }
