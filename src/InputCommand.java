@@ -25,8 +25,7 @@ public class InputCommand
      * was not recognized.
      * @param secondWord The second word of the command. May be null.
      */
-    public InputCommand(EnumCommands commandWord, String secondWord)
-    {
+    public InputCommand(EnumCommands commandWord, String secondWord) {
         this.commandWord = commandWord;
         this.secondWord = secondWord;
     }

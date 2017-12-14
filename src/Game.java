@@ -61,10 +61,6 @@ public class Game {
       controller.printGameInfo("You are lost. You are alone. You wander");
       controller.printGameInfo("around the Andes.");
       controller.printGameInfo("");
-      controller.printGameInfo("Your command words are:");
-      parser.showCommands();
-      controller.printGameInfo("");
-      controller.printGameInfo("");
     }
 	
 	/**

@@ -103,7 +103,12 @@ public class Controller implements Initializable {
     inventory.setText(sb.toString());
   }
 
-  public void updateCommandsText() {
-    //TODO Implement
+  public void updateCommandsText(Set<String> commandNames) {
+    StringBuilder sb = new StringBuilder("Commands: \n");
+
+    for(String item : commandNames) {
+      sb.append(item + "\n");
+    }
+    commands.setText(sb.toString());
   }
 }

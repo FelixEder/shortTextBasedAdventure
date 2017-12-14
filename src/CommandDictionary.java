@@ -17,11 +17,12 @@ public class CommandDictionary {
      * Constructor - initialize the command words.
      */
     public CommandDictionary(Controller controller) {
-        validCommands = new HashMap<String, EnumCommands>();
-        for(EnumCommands command : EnumCommands.values()) {
-            validCommands.put(command.toString(), command);
-        }
-        this.controller = controller;
+      validCommands = new HashMap<>();
+      for(EnumCommands command : EnumCommands.values()) {
+          validCommands.put(command.toString(), command);
+      }
+      this.controller = controller;
+      controller.updateCommandsText(validCommands.keySet());
     }
 
     /**
@@ -40,21 +41,10 @@ public class CommandDictionary {
      * Check whether a given String is a valid command word. 
      * @return true if it is, false if it isn't.
      */
-    public boolean isCommand(String aString) {
-        return validCommands.containsKey(aString);
+    public boolean isCommand(String command) {
+        return validCommands.containsKey(command);
     }
 
-    /**
-     * Print all valid commands to System.out.
-     */
-    public void showAll() {
-        String itemString = "";
-        for(String command : validCommands.keySet()) {
-        	itemString += command + "   ";
-        }
-        	controller.printGameInfo(itemString);
-    }
-    
     /**
      * @return The command associated with the HELP-command.
      */
