@@ -67,12 +67,4 @@ public class Item extends Element{
 	public boolean isLiftable() {
 		return liftable;
 	}
-	
-	/**
-	 * Set an item as liftable or not.
-	 * @param liftable The boolean value regarding the question told above.
-	 */
-	public void setLiftable(Boolean liftable) {
-		this.liftable = liftable;
-	}
 }
