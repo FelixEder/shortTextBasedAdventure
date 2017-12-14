@@ -109,10 +109,6 @@ public class Game {
 		case DROP:
 			playerActions.dropItems(inputCommand);
 			break;
-	          
-		case ITEMS:
-      controller.printGameInfo(player.getInventoryString() + "\n");
-			break;
 			
 		default:
       controller.printGameInfo("I don't know what you mean..." + "\n");

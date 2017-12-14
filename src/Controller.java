@@ -49,7 +49,7 @@ public class Controller implements Initializable {
         input.selectEnd(); //Does not change anything seemingly
         break;
 
-      case DOWN:	if(historyPointer == history.size()-1) break;
+      case DOWN:	if(historyPointer == history.size() - 1) break;
         historyPointer++;
         input.setText(history.get(historyPointer));
         input.selectAll();
@@ -90,5 +90,13 @@ public class Controller implements Initializable {
     String returnText = textToRead;
     textToRead = null;
     return returnText;
+  }
+
+  public void updateInventoryText() {
+
+  }
+
+  public void updateCommandsText() {
+
   }
 }

@@ -18,16 +18,6 @@ import javafx.stage.Stage;
 
 public class Main extends Application{
 
-	@FXML
-	protected static TextField input;
-
-	@FXML
-	protected static TextArea output, inventory, commands;
-	
-	protected static List<String> history;
-	protected static int historyPointer;
-	protected static String textToRead = null;
-	
 	private Service<Void> backgroundThread;
 		
 	public static void main(String[] args) {
